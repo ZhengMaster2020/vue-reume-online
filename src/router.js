@@ -4,6 +4,8 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
+const BaseMessage =  () => import(/* webpackChunkName: "baseMsg" */ "./components/BaseMessage.vue")
+
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
@@ -11,7 +13,11 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
+      children: [
+        { path: '/base', component: BaseMessage
+       }
+      ]
     },
     {
       path: "/about",
