@@ -3,8 +3,8 @@
     <el-row :gutter="20">
       <el-col :md="6" class="left-panel">
         <ul class="left-message">
-          <li v-for="(item, index) in module" :key="item">
-            <span>{{ item }}</span>
+          <li v-for="(item, index) in module" :key="index">
+            <span v-for="(val, key) in item" :key="val" @click="jump(key)">{{ val }}</span>
             <span class="move-delete">
               <i class="el-icon el-icon-rank"></i>
               <i class="el-icon el-icon-delete" @click="deleteModule(index)"></i>
@@ -33,10 +33,22 @@ export default {
   name: "home",
   data() {
     return {
-      module: ["基本信息", "专业技能", "实习经历", "教育经历"]
+      module: [{
+        base: "基本信息"
+      },{
+        skill: "专业技能"
+      },{
+        intern: "实习经历"
+      },{
+        education: "教育经历"
+      }]
     };
   },
   methods: {
+    jump (name) {
+      this.$router.push(`/${name}`)
+    },
+
     addModule () {
       this.$prompt(
         "请输入自定义模块的名称",
@@ -61,7 +73,6 @@ export default {
     },
 
     deleteModule (index) {
-      // this.$alert(index)
       this.module.splice(index, 1)
     }
   }

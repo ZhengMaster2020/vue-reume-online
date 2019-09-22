@@ -5,6 +5,9 @@ import Home from "./views/Home.vue";
 Vue.use(Router);
 
 const BaseMessage =  () => import(/* webpackChunkName: "baseMsg" */ "./components/BaseMessage.vue")
+const PersonalSkill = () => import( /* webpackChunkName: "skillMsg" */ "./components/PersonalSkill.vue")
+const InternExperience = () => import( /* webpackChunkName: "internMsg" */ "./components/InternExperience.vue")
+const EducationExperience = () => import( /* webpackChunkName: "educationMsg" */ "./components/EducationExperience.vue")
 
 export default new Router({
   mode: "history",
@@ -15,8 +18,10 @@ export default new Router({
       name: "home",
       component: Home,
       children: [
-        { path: '/base', component: BaseMessage
-       }
+        { path: "/base", component: BaseMessage },
+        { path: "/skill", component: PersonalSkill },
+        { path: "/intern", component: InternExperience },
+        { path: "/education", component: EducationExperience }
       ]
     },
     {
