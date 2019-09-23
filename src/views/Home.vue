@@ -1,10 +1,11 @@
 <template>
   <div class="home">
+    <Header/>
     <el-row :gutter="20">
       <el-col :md="6" class="left-panel">
         <ul class="left-message">
           <li v-for="(item, index) in module" :key="index">
-            <span v-for="(val, key) in item" :key="val" @click="jump(key)">{{ val }}</span>
+            <span v-for="(val, key) in item" :key="val"  @click="jump(key)">{{ val }}</span>
             <span class="move-delete">
               <i class="el-icon el-icon-rank"></i>
               <i class="el-icon el-icon-delete" @click="deleteModule(index)"></i>
@@ -27,12 +28,17 @@
 
 <script>
 /* eslint-disable */
-// @ is an alias to /src
+
+import Header from "../components/Header.vue"
 
 export default {
   name: "home",
+  components: {
+    Header
+  },
   data() {
     return {
+      isActive: false,
       module: [{
         base: "基本信息"
       },{
@@ -80,6 +86,13 @@ export default {
 </script>
 
 <style scoped>
+.active{
+  color: #404040;
+}
+/* .router-link-exact-active {
+  color: #ff4f4c !important;
+  border-bottom: 2px solid #ff4f4c;
+} */
 .move-delete i:hover {
   color: #fff;
   background: #409eff;
@@ -101,9 +114,6 @@ export default {
 .left-message li:hover .move-delete{
   display: block;
 }
-/* .left-message li:active {
-  background: #409eff;
-} */
 .left-message li {
   color: #9c9c9c;
   padding: 10px;
@@ -127,17 +137,12 @@ export default {
   display: block;
   text-align: center;
 }
-.home {
-  margin: 10px;
-}
-.left-panel {
-  border: 1px solid #eee;
+.left-panel, .right-panel {
+  border: 1px solid #DEDFE1;
   text-align: center;
   padding: 5px;
   margin: 20px;
-}
-.right-panel {
-  margin: 20px;
-  background: rebeccapurple;
+  color: #fff;
+  background-color: #fff;
 }
 </style>

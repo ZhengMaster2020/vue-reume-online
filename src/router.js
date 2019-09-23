@@ -11,27 +11,28 @@ const EducationExperience = () => import( /* webpackChunkName: "educationMsg" */
 
 export default new Router({
   mode: "history",
-  base: process.env.BASE_URL,
+  base: '/',
   routes: [
     {
       path: "/",
       name: "home",
+      redirect: '/base',
       component: Home,
       children: [
-        { path: "/base", component: BaseMessage },
-        { path: "/skill", component: PersonalSkill },
-        { path: "/intern", component: InternExperience },
+        { path: "/base", name: 'base', component: BaseMessage },
+        { path: "/skill", name: 'skill', component: PersonalSkill },
+        { path: "/intern",name: 'intern',  component: InternExperience },
         { path: "/education", component: EducationExperience }
       ]
     },
     {
-      path: "/about",
-      name: "about",
+      path: "/preview",
+      name: "preview",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+        import(/* webpackChunkName: "showEdit" */ "./views/ShowEdit.vue")
     }
   ]
 });
