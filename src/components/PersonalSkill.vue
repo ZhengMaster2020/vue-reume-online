@@ -2,6 +2,7 @@
   <div class="skillmsg">
      <h3 class="title">专业技能 <i class="el-icon el-icon-edit"></i></h3>
      <div class="content">
+       <!-- vue markdown插件 -->
        <mavon-editor class="mavon-editor" toolbarsBackground="#f6f8fa" v-model="value"/>
      </div>
      <div>
@@ -28,6 +29,9 @@ export default {
       const currentRoute = this.$router.currentRoute
       if (currentRoute.name === 'skill' && val === '上一步') {
         this.$router.push('/base')
+      }
+      if (currentRoute.name === 'skill' && val === '下一步') {
+        this.$router.push('/education')
       }
     },
     save () {
