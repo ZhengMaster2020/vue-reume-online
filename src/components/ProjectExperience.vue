@@ -1,19 +1,19 @@
 <template>
   <div class="internmsg">
     <h3 class="title">
-      实习/工作经历
+      项目经历
       <i class="el-icon el-icon-edit"></i>
     </h3>
     <el-form ref="form" :model="form" label-width="80px">
       <el-row>
         <el-col :span="10">
           <el-form-item>
-            <el-input v-model="form.name" placeholder="公司名称"></el-input>
+            <el-input v-model="form.name" placeholder="项目名称"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="10">
           <el-form-item>
-            <el-input v-model="form.address" placeholder="公司地址"></el-input>
+            <el-input v-model="form.address" placeholder="城市"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -41,7 +41,7 @@
       <el-row>
         <el-col :span="20">
           <el-form-item>
-             <el-tag type="info" style="float:left">工作内容 （点击填写框即可显示案例和关键词）</el-tag>
+             <el-tag type="info" style="float:left">内容描述</el-tag>
           </el-form-item>
           <el-form-item>
              <mavon-editor 
@@ -55,7 +55,7 @@
       <el-form-item>
         <el-button  style="float:left; color:#9c9c9c" size="medium" type="text">
           <el-icon class="el-icon-plus" style="color:#ff4f4c; font-weight:bold"></el-icon>
-          添加更多实习/工作经历
+          添加更多项目经历
         </el-button>
       </el-form-item>
       <el-form-item>
@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  name: "BaseMessage",
+  name: "ProjectExp",
   data() {
     return {
       form: {

@@ -1,11 +1,129 @@
 <template>
-  <div class="basemsg">
-  教育经历信息
+  <div class="edumsg">
+    <h3 class="title">教育经历 <i class="el-icon el-icon-edit"></i></h3>
+    <el-form ref="form" :model="form" label-width="80px">
+      <el-row>
+        <el-col :span="20">
+          <el-form-item>
+            <el-input v-model="form.shcool" placeholder="学校名称"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="10">
+          <el-form-item>
+            <el-input v-model="form.name" placeholder="专业"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="10">
+          <el-form-item>
+            <el-select v-model="form.optionValue" placeholder="学历">
+              <el-option
+                v-for="item in form.options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="10">
+          <el-form-item>
+            <el-input  v-model="form.position" placeholder="二级学院"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="10">
+          <el-form-item>
+            <el-input  v-model="form.partment" placeholder="所在城市"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-form-item>
+        <el-col :span="9">
+          <el-date-picker type="date" placeholder="入学时间（YYYY-MM）" v-model="form.dateStart" style="width: 100%;"></el-date-picker>
+        </el-col>
+        <el-col class="line" :span="2">-</el-col>
+        <el-col :span="9">
+          <el-date-picker placeholder="毕业时间（YYYY-MM）" v-model="form.dateEnd" style="width: 100%;"></el-date-picker>
+        </el-col>
+      </el-form-item>
+      <el-row>
+        <el-col :span="20">
+          <el-form-item>
+             <el-tag type="info" style="float:left">
+               教育描述 （点击填写框即可显示案例和关键词）
+               <el-icon class="el-icon-cpu" style="color: #f40; font-size: 18x; font-weight: bold"></el-icon>
+              </el-tag>
+          </el-form-item>
+          <el-form-item>
+             <mavon-editor 
+              class="mavon-editor" 
+              toolbarsBackground="#f6f8fa" 
+              defaultOpen="edit"
+              v-model="form.educationValue"/>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-form-item>
+        <el-button  style="float:left; color:#9c9c9c" size="medium" type="text">
+          <el-icon class="el-icon-plus" style="color:#ff4f4c; font-weight:bold"></el-icon>
+          添加更多教育经历
+        </el-button>
+      </el-form-item>
+      <el-form-item>
+        <el-button>上一步</el-button>
+        <el-button>保存</el-button>
+        <el-button type="danger">下一步</el-button>
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 
 <script>
 export default {
   name: "BaseMessage",
+  data () {
+    return {
+      form: {
+        name: "",
+        address: "",
+        dateStart: "",
+        dateEnd: "",
+        position: "",
+        partment: "",
+        educationValue: '',
+        options: [{
+        value: "选项1",
+        label: "大专"
+        }, {
+          value: "选项2",
+          label: "本科"
+        }, {
+          value: "选项",
+          label: "硕士"
+        }, {
+          value: "选项4",
+          label: "博士"
+        }, {
+          value: "选项5",
+          label: "MBA"
+        }],
+        optionValue: ""
+      }
+    }
+  }
 }
 </script>
+
+<style scoped>
+.edumsg {
+  padding: 10px;
+}
+.title {
+  margin-bottom: 20px;
+  color: #404040;
+  font-weight: bold;
+}
+</style>

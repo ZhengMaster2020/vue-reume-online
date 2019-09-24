@@ -44,7 +44,9 @@ export default {
       },{
         skill: "专业技能"
       },{
-        intern: "实习经历"
+        intern: "实习/工作经历"
+      },{
+        project: "项目经历"
       },{
         education: "教育经历"
       }]

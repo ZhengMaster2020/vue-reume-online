@@ -8,6 +8,7 @@ const BaseMessage =  () => import(/* webpackChunkName: "baseMsg" */ "./component
 const PersonalSkill = () => import( /* webpackChunkName: "skillMsg" */ "./components/PersonalSkill.vue")
 const InternExperience = () => import( /* webpackChunkName: "internMsg" */ "./components/InternExperience.vue")
 const EducationExperience = () => import( /* webpackChunkName: "educationMsg" */ "./components/EducationExperience.vue")
+const ProjectExperience = () => import( /* webpackChunkName: "projectMsg" */ "./components/ProjectExperience.vue")
 
 export default new Router({
   mode: "history",
@@ -22,7 +23,8 @@ export default new Router({
         { path: "/base", name: 'base', component: BaseMessage },
         { path: "/skill", name: 'skill', component: PersonalSkill },
         { path: "/intern",name: 'intern',  component: InternExperience },
-        { path: "/education", component: EducationExperience }
+        { path: "/education", component: EducationExperience },
+        { path: "/project", component: ProjectExperience }
       ]
     },
     {
