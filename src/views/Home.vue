@@ -4,15 +4,13 @@
     <el-row :gutter="20">
       <el-col :md="6" class="left-panel">
         <ul class="left-message">
-          <li v-for="(item, index) in module" :key="index">
+          <li v-for="(item, key) in modules" :key="key">
             <span 
-              v-for="(val, key) in item" 
-              :key="val" 
               :class="isActive(key)" 
-              @click="jump(key)">{{ val }}</span>
+              @click="jump(key)">{{ item }}</span>
             <span class="move-delete">
               <i class="el-icon el-icon-rank"></i>
-              <i class="el-icon el-icon-delete" @click="deleteModule(index)"></i>
+              <i class="el-icon el-icon-delete" @click="deleteModule(item)"></i>
             </span>
           </li>
           <li @click="addModule">
@@ -42,33 +40,31 @@ export default {
   },
   data() {
     return {
-      module: [{
-        base: "基本信息"
-      },{
-        skill: "专业技能"
-      },{
-        intern: "实习/工作经历"
-      },{
-        project: "项目经历"
-      },{
-        education: "教育经历"
-      }]
+      modules: {}
     };
   },
   
   methods: {
 
+    // 初始化模块的相关数据
+    fetchModulesData () {
+      this.modules = this.$store.state.modules
+    },
+
+    // 当前导航被激活
     isActive (name) {
       if ( name === this.$router.currentRoute.name) {
         return 'isActive'
       }
     },
 
+    // 点击下一步
     jump (name) {
       this.$router.push(`/${name}`)
       return name
     },
 
+    // 新增模块
     addModule () {
       this.$prompt(
         "请输入自定义模块的名称",
@@ -82,7 +78,7 @@ export default {
             type: 'success',
             message: '您输入的模块名称是: ' + value
           });
-          this.module.push(value)
+          this.modules.push(value)
         })
         .catch(() => {
           this.$message({
@@ -92,10 +88,15 @@ export default {
         })
     },
 
-    deleteModule (index) {
-      this.module.splice(index, 1)
+    // 删除模块
+    deleteModule (name) {
+      this.$delete(this.modules, name)
     }
   },
+
+  created () {
+    this.fetchModulesData()
+  }
   
 };
 </script>

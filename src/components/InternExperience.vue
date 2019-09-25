@@ -59,9 +59,9 @@
         </el-button>
       </el-form-item>
       <el-form-item>
-        <el-button>上一步</el-button>
+        <el-button @click="jump(previous)">{{previous}}</el-button>
         <el-button>保存</el-button>
-        <el-button type="danger">下一步</el-button>
+        <el-button @click="jump(next)" type="danger">{{next}}</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -80,8 +80,38 @@ export default {
         position: "",
         partment: "",
         internValue: ''
+      },
+      previous: "上一步",
+      next: "下一步"
+    }
+  },
+
+  methods: {
+    // 模块跳转
+    jump(step) {
+      const moduleKeys = Object.keys(this.$store.state.modules)
+      const currentRouteName = this.$router.currentRoute.name
+      const index = moduleKeys.findIndex(item => {
+        return item === currentRouteName
+      })
+      if (index < moduleKeys.length && index >= 0) {
+        if (step === "上一步") {
+          if (index === 0) {
+            return
+          }
+          this.$router.push(`/${moduleKeys[index - 1]}`)
+          return
+        }
+        if (step === "下一步") {
+          if (index === moduleKeys.length - 1) {
+            this.$router.push("/preview")
+            return
+          }
+          this.$router.push(`/${moduleKeys[index + 1]}`)
+          return
+        }
       }
-    };
+    }
   }
 };
 </script>

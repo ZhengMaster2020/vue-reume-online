@@ -3,27 +3,27 @@
     <h3 class="title">基本信息<i class="el-icon el-icon-tickets"></i></h3>
     <el-row>
       <el-col :span="23">
-        <el-form ref="baseMsg" :model="baseMsg" label-width="80px">
-      <el-form-item label="姓名">
+        <el-form ref="baseMsg"  :rules="rules" :model="baseMsg" status-icon label-width="80px">
+      <el-form-item label="姓名" prop="name">
         <el-input v-model="baseMsg.name" :placeholder="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="电话">
+      <el-form-item label="电话" prop="phone">
         <el-input v-model="baseMsg.phone" :placeholder="form.phone"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱">
+      <el-form-item label="邮箱" prop="email">
         <el-input v-model="baseMsg.email" :placeholder="form.email"></el-input>
       </el-form-item>
-      <el-form-item label="地址">
+      <el-form-item label="地址" prop="address">
         <el-input v-model="baseMsg.address" :placeholder="form.address"></el-input>
       </el-form-item>
-      <el-form-item label="求职意志">
+      <el-form-item label="求职意志" prop="position">
         <el-input v-model="baseMsg.position" :placeholder="form.position"></el-input>
       </el-form-item>
-      <el-form-item label="个人网站">
+      <el-form-item label="个人网站" prop="web">
         <el-input v-model="baseMsg.web" :placeholder="form.web"></el-input>
       </el-form-item>
       <el-form-item size="large">
-        <el-button @click="saveBaseMsg">保存信息</el-button>
+        <el-button @click="saveBaseMsg('baseMsg')">保存信息</el-button>
         <el-button type="danger" @click="next">下一步</el-button>
       </el-form-item>
     </el-form>
@@ -53,6 +53,26 @@ export default {
         address: "",
         position: "",
         web: ""
+      },
+      rules: {
+        name: [
+          { required: true, message: '请输入名称', trigger: 'blur' },
+          { min: 2, max: 12, message: '长度在 2 到 12 个字符', trigger: 'blur' }
+        ],
+        phone: [
+          { required: true, message: '请输入电话', trigger: 'blur' },
+          { type: 'phone', min: 11, max: 11, message: '长度11个字符', trigger: 'blur' }
+        ],
+        email: [
+          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+        ],
+        address: [
+          { required: true, message: '请输入地址', trigger: 'blur' },
+        ],
+        position: [
+          { required: true, message: '请输入名称', trigger: 'blur' },
+        ]
       }
     };
   },
@@ -76,11 +96,17 @@ export default {
     },
 
     // 保存用户填写的基本信息
-    saveBaseMsg () {
-      this.$store.commit('saveBaseMsg', this.baseMsg)
-      setTimeout(() => {
-        this.$message.success("信息保存成功")
-      }, 300)
+    saveBaseMsg (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$store.commit('saveBaseMsg', this.baseMsg)
+          setTimeout(() => {
+            this.$message.success('save success')
+          }, 300)
+        } else {
+          this.$message.error('error submit')
+        }
+      })  
     }
   },
 

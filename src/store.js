@@ -6,6 +6,13 @@ Vue.use(Vuex);
 const data = []
 
 const state =  {
+  modules: {
+    base: "基本信息",
+    skill: "专业技能",
+    intern: "实习/工作经历",
+    project: "项目经历",
+    education: "教育经历"
+  },
   baseMsg: {
     name: "张三",
     phone: "1341564446",
@@ -13,7 +20,8 @@ const state =  {
     address: "广东广州",
     position: "web前端",
     web: "https://zhengmaster.org.cn"
-  }   
+  },
+  skillMsg: ''   
 }
 
 const mutations = {
@@ -27,7 +35,13 @@ const mutations = {
     baseMsg.position = message.position
     baseMsg.web = message.web
     data.push(baseMsg)
-  }
+  },
+
+  saveSkillMsg (state, skill) {
+    state.skillMsg = skill
+    data.push(state.skillMsg)
+  },
+
 }
 
 export default new Vuex.Store({
