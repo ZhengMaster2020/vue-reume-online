@@ -24,7 +24,7 @@
       </el-form-item>
       <el-form-item size="large">
         <el-button @click="saveBaseMsg">保存信息</el-button>
-        <el-button type="danger" @click="jump">下一步</el-button>
+        <el-button type="danger" @click="next">下一步</el-button>
       </el-form-item>
     </el-form>
       </el-col>
@@ -57,6 +57,8 @@ export default {
     };
   },
   methods: {
+
+    // 初始化数据
     fetchBaseMsg () {
       const data = this.$store.state.baseMsg
       this.form.name = data.name
@@ -67,17 +69,21 @@ export default {
       this.form.web = data.web
     },
 
-    jump () {
+    // 点击下一步
+    next () {
+      this.saveBaseMsg()
       this.$router.push('/skill')
     },
 
+    // 保存用户填写的基本信息
     saveBaseMsg () {
       this.$store.commit('saveBaseMsg', this.baseMsg)
       setTimeout(() => {
-        window.alert("信息保存成功")
+        this.$message.success("信息保存成功")
       }, 300)
     }
   },
+
   created () {
     this.fetchBaseMsg()
   }

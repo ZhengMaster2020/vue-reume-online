@@ -3,6 +3,8 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+const data = []
+
 const state =  {
   baseMsg: {
     name: "张三",
@@ -11,7 +13,7 @@ const state =  {
     address: "广东广州",
     position: "web前端",
     web: "https://zhengmaster.org.cn"
-}
+  }   
 }
 
 const mutations = {
@@ -24,7 +26,7 @@ const mutations = {
     baseMsg.address = message.address
     baseMsg.position = message.position
     baseMsg.web = message.web
-    
+    data.push(baseMsg)
   }
 }
 
