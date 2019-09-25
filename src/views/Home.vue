@@ -5,7 +5,11 @@
       <el-col :md="6" class="left-panel">
         <ul class="left-message">
           <li v-for="(item, index) in module" :key="index">
-            <span v-for="(val, key) in item" :key="val"  @click="jump(key)">{{ val }}</span>
+            <span 
+              v-for="(val, key) in item" 
+              :key="val" 
+              :class="isActive(key)" 
+              @click="jump(key)">{{ val }}</span>
             <span class="move-delete">
               <i class="el-icon el-icon-rank"></i>
               <i class="el-icon el-icon-delete" @click="deleteModule(index)"></i>
@@ -38,7 +42,6 @@ export default {
   },
   data() {
     return {
-      isActive: false,
       module: [{
         base: "基本信息"
       },{
@@ -52,9 +55,18 @@ export default {
       }]
     };
   },
+  
   methods: {
+
+    isActive (name) {
+      if ( name === this.$router.currentRoute.name) {
+        return 'isActive'
+      }
+    },
+
     jump (name) {
       this.$router.push(`/${name}`)
+      return name
     },
 
     addModule () {
@@ -83,13 +95,20 @@ export default {
     deleteModule (index) {
       this.module.splice(index, 1)
     }
-  }
+  },
+  
 };
 </script>
 
 <style scoped>
-.active{
-  color: #404040;
+.home {
+  width: 100%;
+  overflow: hidden;
+}
+.isActive {
+  color: #ff4f4c;
+  padding-left: 12px;
+  border-left: 4px solid #ff4f4c;
 }
 /* .router-link-exact-active {
   color: #ff4f4c !important;

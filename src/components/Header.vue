@@ -21,6 +21,7 @@ export default {
   height: 56px;
   text-align: center;
   background-color: #fff;
+  overflow: hidden;
 }
  .router-link {
   margin-left: 10px;

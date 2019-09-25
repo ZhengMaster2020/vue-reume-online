@@ -1,5 +1,5 @@
 <template>
-  <div class="internmsg">
+  <div class="projectmsg">
     <h3 class="title">
       项目经历
       <i class="el-icon el-icon-edit"></i>
@@ -90,9 +90,11 @@ export default {
 .mavon-editor {
   min-height: 500px;
 }
-.internmsg {
+.projectmsg {
   padding: 10px;
   color: #404040;
+  width: 100%;
+  overflow: hidden;
 }
 .title {
   margin-bottom: 20px;

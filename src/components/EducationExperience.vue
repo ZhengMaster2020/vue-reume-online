@@ -120,6 +120,8 @@ export default {
 <style scoped>
 .edumsg {
   padding: 10px;
+  width: 100%;
+  overflow: hidden;
 }
 .title {
   margin-bottom: 20px;

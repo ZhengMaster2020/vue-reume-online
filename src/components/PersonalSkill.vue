@@ -57,5 +57,7 @@ export default {
 }
 .skillmsg {
   padding: 10px;
+  width: 100%;
+  overflow: hidden;
 }
 </style>

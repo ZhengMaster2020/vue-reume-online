@@ -24,6 +24,10 @@ export default {
 </script>
 
 <style scoped>
+.document {
+  width: 100%;
+  overflow: hidden;
+}
 .main {
   text-align: center;
   margin: 20px;

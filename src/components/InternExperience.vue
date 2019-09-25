@@ -93,6 +93,8 @@ export default {
 .internmsg {
   padding: 10px;
   color: #404040;
+  width: 100%;
+  overflow: hidden;
 }
 .title {
   margin-bottom: 20px;

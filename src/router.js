@@ -23,8 +23,8 @@ export default new Router({
         { path: "/base", name: 'base', component: BaseMessage },
         { path: "/skill", name: 'skill', component: PersonalSkill },
         { path: "/intern",name: 'intern',  component: InternExperience },
-        { path: "/education", component: EducationExperience },
-        { path: "/project", component: ProjectExperience }
+        { path: "/education", name: "education", component: EducationExperience },
+        { path: "/project", name: "project", component: ProjectExperience }
       ]
     },
     {
