@@ -61,7 +61,7 @@ export default {
         ],
         phone: [
           { required: true, message: '请输入电话', trigger: 'blur' },
-          { type: 'phone', min: 11, max: 11, message: '长度11个字符', trigger: 'blur' }
+          { type: 'number', pattern: /^1[3|4|5|7|8|9]\d{9}$/, message: 'error', trigger: 'blur' }
         ],
         email: [
           { required: true, message: '请输入邮箱地址', trigger: 'blur' },
