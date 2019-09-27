@@ -1,4 +1,4 @@
-# vue-resume-online
+# vue-resume-online  简历在线生成器
 
 ## Project setup
 ```
