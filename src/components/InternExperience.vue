@@ -60,7 +60,7 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="jump(previous)">{{previous}}</el-button>
-        <el-button>保存</el-button>
+        <el-button @click="saveInternMsg">保存</el-button>
         <el-button @click="jump(next)" type="danger">{{next}}</el-button>
       </el-form-item>
     </el-form>
@@ -91,7 +91,22 @@ export default {
     // 初始化数据
     fetchInternExpData () {
       const internData = this.$store.state.internMsg
-      
+      this.form.name = internData.comName
+      this.form.address =  internData.comAddress
+      this.form.position = internData.comPosition
+      this.form.partment = internData.comPartment
+      this.form.dateStart = internData.dateStart
+      this.form.dateEnd = internData.dateEnd
+      this.form.internValue = internData.internValue
+
+    },
+
+    // 保存数据
+    saveInternMsg () {
+      this.$store.commit('saveInternMsg', this.form)
+      setTimeout(() => {
+        this.$message.success('信息保存成功')
+      }, 300);
     },
 
     // 模块跳转

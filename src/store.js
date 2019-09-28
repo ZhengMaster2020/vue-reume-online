@@ -23,7 +23,7 @@ const state =  {
   },
   skillMsg: '',
   internMsg: {
-    comName: "深圳xxx科技有限公司",
+    comName: "深圳蝌蚪@科技有限公司",
     comAddress: "广东深圳",
     comPosition: "web前端",
     comPartment: "研发部",
@@ -35,21 +35,31 @@ const state =  {
 
 const mutations = {
 
-  saveBaseMsg (state, message) {
+  saveBaseMsg (state, base) {
     const baseMsg = state.baseMsg
-    baseMsg.name = message.name
-    baseMsg.phone = message.phone
-    baseMsg.email = message.email
-    baseMsg.address = message.address
-    baseMsg.position = message.position
-    baseMsg.web = message.web
-    data.push(baseMsg)
+    baseMsg.name =  base.name
+    baseMsg.phone = base.phone
+    baseMsg.email = base.email
+    baseMsg.address = base.address
+    baseMsg.position = base.position
+    baseMsg.web = base.web
   },
 
   saveSkillMsg (state, skill) {
     state.skillMsg = skill
     data.push(state.skillMsg)
   },
+
+  saveInternMsg (state, intern) {
+    const internMsg = state.internMsg
+    internMsg.comName = intern.name 
+    internMsg.comAddress = intern.address 
+    internMsg.comPosition = intern.position 
+    internMsg.comPartment = intern.partment 
+    internMsg.dateStart = intern.dateStart 
+    internMsg.dateEnd = intern.dateEnd 
+    internMsg.internValue = intern.internValue 
+  }
 
 }
 
