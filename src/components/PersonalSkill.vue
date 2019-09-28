@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import jumpUtils from "../utils/jump.js";
 export default {
   name: "BaseMessage",
   data() {

@@ -21,7 +21,16 @@ const state =  {
     position: "web前端",
     web: "https://zhengmaster.org.cn"
   },
-  skillMsg: ''   
+  skillMsg: '',
+  internMsg: {
+    comName: "深圳xxx科技有限公司",
+    comAddress: "广东深圳",
+    comPosition: "web前端",
+    comPartment: "研发部",
+    dateStart: "2019-06",
+    dateEnd: "2019-09",
+    internValue: ''
+  },   
 }
 
 const mutations = {
