@@ -87,8 +87,15 @@ export default {
   },
 
   methods: {
+
+    // 初始化数据
+    fetchInternExpData () {
+      const internData = this.$store.state.internMsg
+      
+    },
+
     // 模块跳转
-    jump(step) {
+    jump (step) {
       const moduleKeys = Object.keys(this.$store.state.modules)
       const currentRouteName = this.$router.currentRoute.name
       const index = moduleKeys.findIndex(item => {
@@ -112,6 +119,10 @@ export default {
         }
       }
     }
+  },
+
+  mounted () {
+    this.fetchInternExpData()
   }
 };
 </script>
