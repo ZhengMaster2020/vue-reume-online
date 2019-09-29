@@ -8,19 +8,19 @@
       <el-row>
         <el-col :span="20">
           <el-form-item>
-            <el-input v-model="form.shcool" placeholder="学校名称"></el-input>
+            <el-input v-model="form.eduSchoolName" placeholder="学校名称"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="10">
           <el-form-item>
-            <el-input v-model="form.name" placeholder="专业"></el-input>
+            <el-input v-model="form.eduProfession" placeholder="专业"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="10">
           <el-form-item>
-            <el-select v-model="form.optionValue" placeholder="学历">
+            <el-select v-model="form.eduValue" placeholder="学历">
               <el-option
                 v-for="item in form.options"
                 :key="item.value"
@@ -34,12 +34,12 @@
       <el-row>
         <el-col :span="10">
           <el-form-item>
-            <el-input v-model="form.position" placeholder="二级学院"></el-input>
+            <el-input v-model="form.eduSecCollege" placeholder="二级学院"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="10">
           <el-form-item>
-            <el-input v-model="form.partment" placeholder="所在城市"></el-input>
+            <el-input v-model="form.eduCity" placeholder="所在城市"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -66,11 +66,12 @@
             </el-tag>
           </el-form-item>
           <el-form-item>
+            // Vue markdown 插件
             <mavon-editor
               class="mavon-editor"
               toolbarsBackground="#f6f8fa"
               defaultOpen="edit"
-              v-model="form.educationValue"
+              v-model="form.eduDesValue"
             />
           </el-form-item>
         </el-col>
@@ -95,13 +96,13 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        address: "",
+        eduSchoolName: "",
+        eduProfession: "",
+        eduSecCollege: "",
+        eduCity: "",
         dateStart: "",
         dateEnd: "",
-        position: "",
-        partment: "",
-        educationValue: "",
+        eduValue: "",
         options: [
           {
             value: "选项1",
@@ -124,7 +125,7 @@ export default {
             label: "MBA"
           }
         ],
-        optionValue: ""
+        eduDesValue: ""
       },
       previous: "上一步",
       next: "下一步"
@@ -135,7 +136,10 @@ export default {
 
     // save education message
     saveEducationMsg() {
-      console.log("123");
+      this.$store.commit('saveEducationMsg', this.form)
+      setTimeout(() => {
+        this.$message.success('信息保存成功！')
+      }, 300);
     },
 
     // 模块跳转

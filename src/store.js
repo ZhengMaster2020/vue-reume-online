@@ -30,7 +30,49 @@ const state =  {
     dateStart: "2019-06",
     dateEnd: "2019-09",
     internValue: ''
-  },   
+  }, 
+  projectMsg: {
+    proName: '',
+    proAddress: '',
+    proPosition: '',
+    proPartment: '',
+    dateStart: '',
+    dateEnd: '',
+    proValue: ''
+  },
+  educationMsg: {
+    eduSchoolName: "",
+    eduProfession: "",
+    eduSecCollege: "",
+    eduCity: "",
+    dateStart: "",
+    dateEnd: "",
+    eduValue: "",
+    options: [
+      {
+        value: "选项1",
+        label: "大专"
+      },
+      {
+        value: "选项2",
+        label: "本科"
+      },
+      {
+        value: "选项",
+        label: "硕士"
+      },
+      {
+        value: "选项4",
+        label: "博士"
+      },
+      {
+        value: "选项5",
+        label: "MBA"
+      }
+    ],
+    eduDesValue: ""
+  },
+  newOtherMsg: []  
 }
 
 const mutations = {
@@ -59,7 +101,32 @@ const mutations = {
     internMsg.dateStart = intern.dateStart 
     internMsg.dateEnd = intern.dateEnd 
     internMsg.internValue = intern.internValue 
-  }
+  },
+
+  saveProjectMsg (state, project) {
+    const proMsg = state.projectMsg
+    proMsg.proName = project.proName
+    proMsg.proAddress = project.proAddress
+    proMsg.proPosition = project.proPosition
+    proMsg.proPartment = project.proPartment
+    proMsg.dateStart = project.dateStart
+    proMsg.dateEnd = project.dateEnd
+    proMsg.proValue = project.proValue
+  },
+
+  saveEducationMsg (state, edu) {
+    const eduMsg = state.educationMsg
+    eduMsg.eduSchoolName = edu.eduSchoolName
+    eduMsg.eduProfession = edu.eduProfession
+    eduMsg.eduSecCollege = edu.eduSecCollege
+    eduMsg.eduCity = edu.eduCity
+    eduMsg.dateStart = edu.dateStart
+    eduMsg.dateEnd = edu.dateEnd
+    eduMsg.eduValue = edu.eduValue
+    eduMsg.eduDesValue = edu.eduDesValue
+  },
+
+    
 
 }
 

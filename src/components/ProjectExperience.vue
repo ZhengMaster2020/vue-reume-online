@@ -8,24 +8,24 @@
       <el-row>
         <el-col :span="10">
           <el-form-item>
-            <el-input v-model="form.name" placeholder="项目名称"></el-input>
+            <el-input v-model="form.proName" placeholder="项目名称"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="10">
           <el-form-item>
-            <el-input v-model="form.address" placeholder="城市"></el-input>
+            <el-input v-model="form.proAddress" placeholder="城市"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
       <el-row>
         <el-col :span="10">
           <el-form-item>
-            <el-input  v-model="form.position" placeholder="你的职位"></el-input>
+            <el-input  v-model="form.proPosition" placeholder="你的职位"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="10">
           <el-form-item>
-            <el-input  v-model="form.partment" placeholder="所在部门"></el-input>
+            <el-input  v-model="form.proPartment" placeholder="所在部门"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -48,7 +48,7 @@
               class="mavon-editor" 
               toolbarsBackground="#f6f8fa" 
               defaultOpen="edit"
-              v-model="form.internValue"/>
+              v-model="form.proValue"/>
           </el-form-item>
         </el-col>
       </el-row>
@@ -73,13 +73,13 @@ export default {
   data() {
     return {
       form: {
-        name: "",
-        address: "",
+        proName: "",
+        proAddress: "",
+        proPosition: "",
+        proPartment: "",
         dateStart: "",
         dateEnd: "",
-        position: "",
-        partment: "",
-        internValue: ''
+        proValue: ''
       },
       previous: "上一步",
       next: "下一步"
@@ -89,7 +89,8 @@ export default {
   methods: {
 
     saveProjectMsg () {
-      this.$message.info('save message')
+      this.$store.commit('saveProjectMsg', this.form)
+      this.$message.success('信息保存成功！')
     },
 
     // 模块跳转
