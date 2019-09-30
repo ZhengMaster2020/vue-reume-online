@@ -6,11 +6,15 @@
     </h3>
     <div class="content">
       <!-- vue markdown插件 -->
-      <mavon-editor class="mavon-editor" toolbarsBackground="#f6f8fa" v-model="value" />
+      <mavon-editor 
+        class = "mavon-editor" 
+        toolbarsBackground = "#f6f8fa" 
+        @save = saveSkillMsg
+        v-model = "value" />
     </div>
     <div>
       <el-button @click="jump(previous)">{{previous}}</el-button>
-      <el-button @click="saveSkillMsg">保存</el-button>
+      <el-button @click="saveSkillHtmlCode">保存</el-button>
       <el-button type="danger" @click="jump(next)">{{next}}</el-button>
     </div>
   </div>
@@ -29,12 +33,14 @@ export default {
   methods: {
 
     // 保存信息
-    saveSkillMsg() {
-      console.log(this.value);
-      this.$store.commit("saveSkillMsg", this.value);
+    saveSkillMsg (value, render) {
+      this.$store.commit("saveSkillMsg", render);
       setTimeout(() => {
         this.$message.success("信息保存成功")
       }, 300)
+    },
+    saveSkillHtmlCode () {
+      this.saveSkillMsg()
     },
 
      // 模块跳转

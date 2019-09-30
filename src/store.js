@@ -32,21 +32,21 @@ const state =  {
     internValue: ''
   }, 
   projectMsg: {
-    proName: '',
-    proAddress: '',
-    proPosition: '',
-    proPartment: '',
-    dateStart: '',
-    dateEnd: '',
+    proName: "求职在线",
+    proAddress: "广州",
+    proPosition: "web前端",
+    proPartment: "研发部",
+    dateStart: "2019-01",
+    dateEnd: "2019-02",
     proValue: ''
   },
   educationMsg: {
-    eduSchoolName: "",
-    eduProfession: "",
-    eduSecCollege: "",
-    eduCity: "",
-    dateStart: "",
-    dateEnd: "",
+    eduSchoolName: "IT科技大学",
+    eduProfession: "计算机科学与技术",
+    eduSecCollege: "信息学院",
+    eduCity: "东莞",
+    dateStart: "2019-08",
+    dateEnd: "2019-10",
     eduValue: "",
     options: [
       {

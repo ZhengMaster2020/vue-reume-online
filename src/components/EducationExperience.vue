@@ -71,6 +71,7 @@
               class="mavon-editor"
               toolbarsBackground="#f6f8fa"
               defaultOpen="edit"
+              @change=handleChange
               v-model="form.eduDesValue"
             />
           </el-form-item>
@@ -133,6 +134,10 @@ export default {
   },
 
   methods: {
+
+    handleChange (value, render) {
+      console.log(render)
+    },
 
     // save education message
     saveEducationMsg() {
