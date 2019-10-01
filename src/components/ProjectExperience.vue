@@ -48,6 +48,8 @@
               class="mavon-editor" 
               toolbarsBackground="#f6f8fa" 
               defaultOpen="edit"
+              @change = handleChange
+              @save = saveProjectMsg
               v-model="form.proValue"/>
           </el-form-item>
         </el-col>
@@ -87,6 +89,10 @@ export default {
   },
 
   methods: {
+
+    handleChange (value, htmlCode) {
+      this.form.proValue = htmlCode
+    },
 
     saveProjectMsg () {
       this.$store.commit('saveProjectMsg', this.form)

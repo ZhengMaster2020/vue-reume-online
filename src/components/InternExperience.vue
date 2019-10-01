@@ -47,7 +47,8 @@
              <mavon-editor 
               class="mavon-editor" 
               toolbarsBackground="#f6f8fa" 
-              defaultOpen="edit"
+              @save = saveInternMsg
+              @change = handleChange
               v-model="form.internValue"/>
           </el-form-item>
         </el-col>
@@ -87,6 +88,10 @@ export default {
   },
 
   methods: {
+    handleChange (value, htmlCode) {
+      console.log(htmlCode)
+      this.form.internValue = htmlCode
+    },
 
     // 初始化数据
     fetchInternExpData () {
@@ -103,6 +108,7 @@ export default {
 
     // 保存数据
     saveInternMsg () {
+      console.log(this.form.internValue)
       this.$store.commit('saveInternMsg', this.form)
       setTimeout(() => {
         this.$message.success('信息保存成功')

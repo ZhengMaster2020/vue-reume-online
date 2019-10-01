@@ -21,16 +21,41 @@ const state =  {
     position: "web前端",
     web: "https://zhengmaster.org.cn"
   },
-  skillMsg: '',
-  internMsg: {
-    comName: "深圳蝌蚪@科技有限公司",
+  skillMsg: `<ul> <li>了解Node.js、express相关框架、可以在node环境开发项目，了解Http协议等相关知识</li>
+    <li>了解基本数据库的操作，MongoDB、MySQ</li> 
+    <li>了解微信小程序开发，有写过相关demo</li>
+    <li>掌握Javascript基本数据结构和算法以及常用的设计模式</li> </ul>`,
+  internMsg: [{
+    comName: "深圳蝌蚪科技有限公司",
     comAddress: "广东深圳",
-    comPosition: "web前端",
+    comPosition: "web前端实习生",
     comPartment: "研发部",
     dateStart: "2019-06",
     dateEnd: "2019-09",
-    internValue: ''
-  }, 
+    internValue: `<ul> 
+    <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
+
+    <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
+
+    <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
+
+    <li>根据后端提供的接口，获取相应数据完成页面的渲染，并深入理解浏览器渲染机制</li> </ul>`
+  },{
+    comName: "深圳蝌蚪科技有限公司",
+    comAddress: "广东深圳",
+    comPosition: "web前端实习生",
+    comPartment: "研发部",
+    dateStart: "2019-06",
+    dateEnd: "2019-09",
+    internValue: `<ul> 
+    <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
+
+    <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
+
+    <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
+
+    <li>根据后端提供的接口，获取相应数据完成页面的渲染，并深入理解浏览器渲染机制</li> </ul>`
+  }], 
   projectMsg: {
     proName: "求职在线",
     proAddress: "广州",

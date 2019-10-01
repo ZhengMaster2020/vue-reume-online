@@ -38,11 +38,35 @@
         </el-row>
         <el-row class="row intern">
           <el-col>
+            <h2 class="title"> 实习/工作经历 </h2>
+            <hr>  
+          </el-col>
+        </el-row>
+        <el-row v-for="(item, index) in content.internMsg" :key="index">
+          <el-col>
+            <div class="intern-header">
+              <span>{{item.comName}}</span>
+              <span class="intern-position">{{item.comPosition}}</span>
+              <span class="intern-time">
+                {{item.dateStart}} 至 {{item.dateEnd}}
+              </span>
+            </div>
+          </el-col>
+          <el-col>
+            <mavon-editor 
+              class="mavon-editor"
+              v-html="item.internValue"
+              :boxShadow=false
+            />
+          </el-col>
+        </el-row>
+        <el-row class="row project">
+          <el-col>
             <h2 class="title"> 项目经历 </h2>
             <hr>  
           </el-col>
         </el-row>
-        <el-row class="row intern">
+        <el-row class="row education">
           <el-col>
             <h2 class="title"> 教育经历 </h2>
             <hr>  
@@ -75,7 +99,6 @@ export default {
   methods: {
     fetchData () {
       this.content = this.$store.state
-      console.log(this.content)
     }
   },
   created () {
@@ -85,20 +108,36 @@ export default {
 </script>
 
 <style scoped>
+.intern-time {
+  float: right;
+  margin-right: 20px;
+}
+.intern-position {
+  margin-left: 20px;
+}
+.intern-header {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 800;
+  margin-left: 20px;
+  padding-bottom: 5px;
+}
 .mavon-editor {
   margin: 0 20px;
-  padding: 5px 0;
+  padding: 5px 0px;
+  padding-left: 20px;
   width: 90%;
-  min-height: 200px;
   border: none;
+  min-height: 100px;
 }
 .tag {
  font-weight: bold; 
 }
-.skill,.intern .title {
+.skill,.intern,.project,.education
+.title {
   font-weight: bold;
 }
-.skill,.intern {
+.skill,.intern,.project,.education {
   text-align: left;
   display: block;
 }

@@ -75,6 +75,7 @@ export default {
 <style scoped>
 .mavon-editor {
   min-height: 500px;
+  color: #404040;
 }
 .content {
   margin: 10px;
