@@ -70,7 +70,6 @@
             <mavon-editor
               class="mavon-editor"
               toolbarsBackground="#f6f8fa"
-              defaultOpen="edit"
               @change=handleChange
               v-model="form.eduDesValue"
             />
@@ -186,5 +185,8 @@ export default {
   margin-bottom: 20px;
   color: #404040;
   font-weight: bold;
+}
+.mavon-editor {
+  color: #404040;
 }
 </style>

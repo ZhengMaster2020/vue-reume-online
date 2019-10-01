@@ -34,11 +34,11 @@ const state =  {
     dateEnd: "2019-09",
     internValue: `<ul> 
     <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
-
     <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
-
+    <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
+    <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
+    <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
     <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
-
     <li>根据后端提供的接口，获取相应数据完成页面的渲染，并深入理解浏览器渲染机制</li> </ul>`
   },{
     comName: "深圳蝌蚪科技有限公司",
@@ -49,30 +49,53 @@ const state =  {
     dateEnd: "2019-09",
     internValue: `<ul> 
     <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
-
+    <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
+    <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
     <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
-
     <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
-
     <li>根据后端提供的接口，获取相应数据完成页面的渲染，并深入理解浏览器渲染机制</li> </ul>`
   }], 
-  projectMsg: {
+  projectMsg: [{
     proName: "求职在线",
     proAddress: "广州",
     proPosition: "web前端",
     proPartment: "研发部",
     dateStart: "2019-01",
     dateEnd: "2019-02",
-    proValue: ''
-  },
-  educationMsg: {
+    proValue: `<ul> 
+    <li>万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢</li> 
+    <li>万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢</li> 
+    <li>万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢</li> 
+    <li>万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢</li> 
+    <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
+    <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
+    </ul>`
+  },{
+    proName: "求职在线2",
+    proAddress: "广州",
+    proPosition: "web前端",
+    proPartment: "研发部",
+    dateStart: "2019-01",
+    dateEnd: "2019-02",
+    proValue: `<ul> 
+      <li>万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢万名呢</li>
+      <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
+      <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
+      <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
+      <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
+      <li>根据UI设计的图纸完成一些页面和公用组件的开发</li> 
+    </ul>`
+  }],
+  educationMsg: [{
     eduSchoolName: "IT科技大学",
     eduProfession: "计算机科学与技术",
     eduSecCollege: "信息学院",
     eduCity: "东莞",
     dateStart: "2019-08",
     dateEnd: "2019-10",
-    eduValue: "",
+    eduValue: `<ul> 
+    <li>GPA：3.52 / 5.0（专业前6%）| 荣誉/奖项：三等奖学金</li> 
+    </ul>`,
     options: [
       {
         value: "选项1",
@@ -96,7 +119,7 @@ const state =  {
       }
     ],
     eduDesValue: ""
-  },
+  }],
   newOtherMsg: []  
 }
 

@@ -10,6 +10,8 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "element-ui": "^2.12.0",
+    "html2canvas": "^1.0.0-rc.5",
+    "jspdf": "^1.5.3",
     "mavon-editor": "^2.7.6",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",

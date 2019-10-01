@@ -87,11 +87,14 @@ export default {
     }
   },
 
-  methods: {
-    handleChange (value, htmlCode) {
+  computed: {
+     handleChange (value, htmlCode) {
       console.log(htmlCode)
       this.form.internValue = htmlCode
-    },
+    }
+  },
+
+  methods: {
 
     // 初始化数据
     fetchInternExpData () {

@@ -66,18 +66,52 @@
             <hr>  
           </el-col>
         </el-row>
+        <el-row v-for="item in content.projectMsg" :key="item.proName">
+          <el-col>
+            <div class="intern-header">
+              <span> {{item.proName}} </span>
+              <span class="intern-position"> {{item.proPosition}} </span>
+              <span class="intern-position"> {{item.proPartment}} </span>
+              <span class="intern-time">
+               {{item.dateStart}} 至 {{item.dateEnd}}
+              </span>
+            </div>
+          </el-col>
+          <el-col>
+            <mavon-editor 
+              class="mavon-editor"
+              v-html="item.proValue"
+              :boxShadow=false
+            />
+          </el-col>
+        </el-row>
+
         <el-row class="row education">
           <el-col>
             <h2 class="title"> 教育经历 </h2>
             <hr>  
           </el-col>
         </el-row>
-        <el-row class="row intern">
+        <el-row v-for="item in content.educationMsg" :key="item.eduSchoolName">
           <el-col>
-            <h2 class="title"> 开源项目及作品 </h2>
-            <hr>  
+            <div class="intern-header">
+              <span> {{item.eduSchoolName}} </span>
+              <span class="intern-position"> {{item.eduProfession}} </span>
+              <span class="intern-position"> {{item.eduSecCollege}} </span>
+              <span class="intern-time">
+               {{item.dateStart}} 至 {{item.dateEnd}}
+              </span>
+            </div>
+          </el-col>
+          <el-col>
+            <mavon-editor 
+              class="mavon-editor"
+              v-html="item.eduValue"
+              :boxShadow=false
+            />
           </el-col>
         </el-row>
+
       </el-col>
     </el-row>
   </div>
@@ -124,6 +158,7 @@ export default {
 }
 .mavon-editor {
   margin: 0 20px;
+  margin-bottom: 5px;
   padding: 5px 0px;
   padding-left: 20px;
   width: 90%;
@@ -148,7 +183,9 @@ export default {
 .main {
   text-align: center;
   margin: 20px;
+  margin-left: 120px;
   padding: 10px;
+  max-width: 1200px;
   background: #fefefe;
 }
 .row {
