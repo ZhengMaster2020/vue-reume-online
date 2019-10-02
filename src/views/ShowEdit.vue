@@ -116,6 +116,7 @@
     <el-row class="btn">
       <el-col>
         <el-button type="danger" size="mini" @click="handlePreview">PDF 预览</el-button>
+        <!-- <el-button type="danger" size="mini" @click="handleWindowPrint">PDF 预览</el-button> -->
         <el-button type="danger" size="mini" @click="handleDown">PDF 下载</el-button>
       </el-col>
     </el-row>
@@ -148,7 +149,19 @@ export default {
 
     handleDown () {
       htmlToPdf.downloadPDF(document.querySelector('#resume'))
-    }
+    },
+
+    //浏览器方式打印
+    handleWindowPrint(){
+      document.body.innerHTML =  document.querySelector( "#resume" ).outerHTML;
+      //转异步 等待dom元素渲染（样式）完毕在打印
+      setTimeout( ()=>{
+          //打印
+          window.print();
+          //刷新页面
+          window.location.reload();
+      },20 )
+    },
   },
   created () {
     this.fetchData()
