@@ -1,7 +1,7 @@
 <template>
   <div class="document">
     <Header/>
-    <el-row class="main">
+    <el-row id="resume" class="main">
       <el-col :span="24">
         <el-row class="row">
           <el-col>
@@ -111,7 +111,12 @@
             />
           </el-col>
         </el-row>
-
+      </el-col>
+    </el-row>
+    <el-row class="btn">
+      <el-col>
+        <el-button type="danger" size="mini" @click="handlePreview">PDF 预览</el-button>
+        <el-button type="danger" size="mini" @click="handleDown">PDF 下载</el-button>
       </el-col>
     </el-row>
   </div>
@@ -119,6 +124,7 @@
 
 <script>
 import Header from "../components/Header.vue"
+import htmlToPdf from "../utils/htmlToPdf"
 
 export default {
   components: {
@@ -133,15 +139,27 @@ export default {
   methods: {
     fetchData () {
       this.content = this.$store.state
+    },
+
+    handlePreview () {
+      this.$message.info('该功能正在开发中。。。')
+    },
+
+    handleDown () {
+      htmlToPdf.downloadPDF(document.querySelector('#resume', 'my resume.pdf'))
     }
   },
-  created () {
+  created () {` `
     this.fetchData()
   }
 }
 </script>
 
 <style scoped>
+.btn {
+  margin: 10px;
+  text-align: center;
+}
 .intern-time {
   float: right;
   margin-right: 20px;
