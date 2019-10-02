@@ -146,7 +146,7 @@ export default {
     },
 
     handleDown () {
-      htmlToPdf.downloadPDF(document.querySelector('#resume', 'my resume.pdf'))
+      htmlToPdf.downloadPDF(document.querySelector('#resume'))
     }
   },
   created () {` `

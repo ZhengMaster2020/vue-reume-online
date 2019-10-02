@@ -38,7 +38,7 @@ function downloadPDF(ele){
 
   // html2canvas(element).then( (canvas)=>{ //报错
   // html2canvas(element[0]).then( (canvas)=>{
-  html2canvas( ele, {
+  await html2canvas( ele, {
       dpi: 300,
       // allowTaint: true,  //允许 canvas 污染， allowTaint参数要去掉，否则是无法通过toDataURL导出canvas数据的
       useCORS:true  //允许canvas画布内 可以跨域请求外部链接图片, 允许跨域请求。
