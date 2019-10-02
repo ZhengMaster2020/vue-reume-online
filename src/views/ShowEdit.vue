@@ -125,6 +125,7 @@
 <script>
 import Header from "../components/Header.vue"
 import htmlToPdf from "../utils/htmlToPdf"
+import { async } from 'q'
 
 export default {
   components: {
@@ -149,7 +150,7 @@ export default {
       htmlToPdf.downloadPDF(document.querySelector('#resume'))
     }
   },
-  created () {` `
+  created () {
     this.fetchData()
   }
 }

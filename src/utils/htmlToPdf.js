@@ -26,8 +26,6 @@ function downloadPDF(ele){
   canvas.height = eleH * 2;
 
 
-
-
   var context = canvas.getContext("2d");
 
   context.scale(2, 2);
@@ -36,12 +34,19 @@ function downloadPDF(ele){
   // 这里默认横向没有滚动条的情况，因为offset.left(),有无滚动条的时候存在差值，因此
   // translate的时候，要把这个差值去掉
 
+  //解决html2canvas截图不全的问题 
+  window.pageYOffset = 0;
+  document.documentElement.scrollTop = 0
+  document.body.scrollTop = 0
+
   // html2canvas(element).then( (canvas)=>{ //报错
   // html2canvas(element[0]).then( (canvas)=>{
-  await html2canvas( ele, {
+  html2canvas( ele, {
       dpi: 300,
       // allowTaint: true,  //允许 canvas 污染， allowTaint参数要去掉，否则是无法通过toDataURL导出canvas数据的
-      useCORS:true  //允许canvas画布内 可以跨域请求外部链接图片, 允许跨域请求。
+      useCORS:true,  //允许canvas画布内 可以跨域请求外部链接图片, 允许跨域请求。
+    //   windowWidth: ele.scrollWidth,
+    //   windowHeight: ele.scrollHeight
   } ).then( (canvas)=>{
 
       var contentWidth = canvas.width;
