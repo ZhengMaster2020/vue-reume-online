@@ -6,7 +6,7 @@
 
 ## 项目演示:tv:
 
-![img](C:\Users\lizheng\Desktop\resume online.gif)
+![img](https://github.com/ZhengMaster2020/vue-reume-online/blob/master/public/images/resume%20online.gif)
 
 ## 项目技术栈:black_flag:
 
