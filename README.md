@@ -6,7 +6,7 @@
 
 ## 项目演示:tv:
 
-![img](https://github.com/ZhengMaster2020/vue-reume-online/blob/master/public/images/resume%20online.gif)
+![图片加载失败](https://user-gold-cdn.xitu.io/2020/6/16/172bdcee311e32a7?imageslim)
 
 ## 项目技术栈:black_flag:
 
