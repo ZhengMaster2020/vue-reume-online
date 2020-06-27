@@ -1,113 +1,114 @@
 <template>
   <div class="document">
-    <Header/>
+    <Header />
     <el-row id="resume" class="main">
       <el-col :span="24">
         <el-row class="row">
           <el-col>
-            <h1 style="font-weight: bold"> {{this.content.baseMsg.name}} </h1>
+            <h1 style="font-weight: bold">{{ baseMsg.name }}</h1>
           </el-col>
         </el-row>
         <el-row class="row">
           <el-col :span="24">
-            <span class="tag">电话：</span>{{this.content.baseMsg.phone}} | 
-            <span class="tag">邮箱：</span>{{this.content.baseMsg.email}} | 
-            <span class="tag">地址：</span>{{this.content.baseMsg.address}}
+            <span class="tag">电话：</span>{{ baseMsg.phone }} |
+            <span class="tag">电话：</span>{{ baseMsg.phone }} |
+            <span class="tag">邮箱：</span>{{ baseMsg.email }} |
+            <span class="tag">地址：</span>{{ baseMsg.address }}
           </el-col>
         </el-row>
         <el-row class="row">
           <el-col :span="24">
-            <span class="tag">个人网址：</span>{{this.content.baseMsg.web}} |  
+            <span class="tag">个人网址：</span>{{ baseMsg.web }} |
             <span class="tag">wechat：</span> weixin1899855881
           </el-col>
         </el-row>
         <el-row class="row skill">
           <el-col>
-            <h2 class="title"> 专业技能 </h2>
-            <hr>  
+            <h2 class="title">专业技能</h2>
+            <hr />
           </el-col>
         </el-row>
         <el-row>
           <el-col>
-            <mavon-editor 
+            <mavon-editor
               class="mavon-editor"
-              v-html="content.skillMsg"
-              :boxShadow=false
+              v-html="skillRenderMsg"
+              :boxShadow="false"
             />
           </el-col>
         </el-row>
         <el-row class="row intern">
           <el-col>
-            <h2 class="title"> 实习/工作经历 </h2>
-            <hr>  
+            <h2 class="title">工作经历</h2>
+            <hr />
           </el-col>
         </el-row>
         <el-row v-for="(item, index) in content.internMsg" :key="index">
           <el-col>
             <div class="intern-header">
-              <span>{{item.comName}}</span>
-              <span class="intern-position">{{item.comPosition}}</span>
+              <span>{{ item.comName }}</span>
+              <span class="intern-position">{{ item.comPosition }}</span>
               <span class="intern-time">
-                {{item.dateStart}} 至 {{item.dateEnd}}
+                {{ item.dateStart }} 至 {{ item.dateEnd }}
               </span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor 
+            <mavon-editor
               class="mavon-editor"
               v-html="item.internValue"
-              :boxShadow=false
+              :boxShadow="false"
             />
           </el-col>
         </el-row>
         <el-row class="row project">
           <el-col>
-            <h2 class="title"> 项目经历 </h2>
-            <hr>  
+            <h2 class="title">项目经历</h2>
+            <hr />
           </el-col>
         </el-row>
         <el-row v-for="item in content.projectMsg" :key="item.proName">
           <el-col>
             <div class="intern-header">
-              <span> {{item.proName}} </span>
-              <span class="intern-position"> {{item.proPosition}} </span>
-              <span class="intern-position"> {{item.proPartment}} </span>
+              <span> {{ item.proName }} </span>
+              <span class="intern-position"> {{ item.proPosition }} </span>
+              <span class="intern-position"> {{ item.proPartment }} </span>
               <span class="intern-time">
-               {{item.dateStart}} 至 {{item.dateEnd}}
+                {{ item.dateStart }} 至 {{ item.dateEnd }}
               </span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor 
+            <mavon-editor
               class="mavon-editor"
               v-html="item.proValue"
-              :boxShadow=false
+              :boxShadow="false"
             />
           </el-col>
         </el-row>
 
         <el-row class="row education">
           <el-col>
-            <h2 class="title"> 教育经历 </h2>
-            <hr>  
+            <h2 class="title">教育经历</h2>
+            <hr />
           </el-col>
         </el-row>
         <el-row v-for="item in content.educationMsg" :key="item.eduSchoolName">
           <el-col>
             <div class="intern-header">
-              <span> {{item.eduSchoolName}} </span>
-              <span class="intern-position"> {{item.eduProfession}} </span>
-              <span class="intern-position"> {{item.eduSecCollege}} </span>
+              <span> {{ item.eduSchoolName }} </span>
+              <span class="intern-position"> {{ item.eduProfession }} </span>
+              <span class="intern-position"> {{ item.eduSecCollege }} </span>
               <span class="intern-time">
-               {{item.dateStart}} 至 {{item.dateEnd}}
+                {{ item.dateStart }} 至 {{ item.dateEnd }}
               </span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor 
+            <mavon-editor
               class="mavon-editor"
               v-html="item.eduValue"
-              :boxShadow=false
+              :boxShadow="false"
             />
           </el-col>
         </el-row>
@@ -115,58 +116,73 @@
     </el-row>
     <el-row class="btn">
       <el-col>
-        <el-button type="danger" size="mini" @click="handlePreview">PDF 预览</el-button>
+        <el-button type="danger" size="mini" @click="handlePreview"
+          >PDF 预览</el-button
+        >
         <!-- <el-button type="danger" size="mini" @click="handleWindowPrint">PDF 预览</el-button> -->
-        <el-button type="danger" size="mini" @click="handleDown">PDF 下载</el-button>
+        <el-button type="danger" size="mini" @click="handleDown"
+          >PDF 下载</el-button
+        >
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import Header from "../components/Header.vue"
-import htmlToPdf from "../utils/htmlToPdf"
-import { async } from 'q'
+import { mapState } from 'vuex';
+import Header from '../components/Header.vue';
+import htmlToPdf from '../utils/htmlToPdf';
+import { async } from 'q';
 
 export default {
   components: {
-    Header
+    Header,
   },
-  data () {
+  data() {
     return {
-      content: "",
-      value: ""
-    }
+      content: '',
+      value: '',
+    };
+  },
+  computed: {
+    ...mapState([
+      'baseMsg',
+      'skillMsg',
+      'skillRenderMsg',
+      'internMsg',
+      'projectMsg',
+    ]),
   },
   methods: {
-    fetchData () {
-      this.content = this.$store.state
+    fetchData() {
+      this.content = this.$store.state;
     },
 
-    handlePreview () {
-      this.$message.info('该功能正在开发中。。。')
+    handlePreview() {
+      this.$message.info('该功能正在开发中。。。');
     },
 
-    handleDown () {
-      htmlToPdf.downloadPDF(document.querySelector('#resume'))
+    handleDown() {
+      htmlToPdf.downloadPDF(document.querySelector('#resume'));
     },
 
     //浏览器方式打印
-    handleWindowPrint(){
-      document.body.innerHTML =  document.querySelector( "#resume" ).outerHTML;
+    handleWindowPrint() {
+      document.body.innerHTML = document.querySelector('#resume').outerHTML;
       //转异步 等待dom元素渲染（样式）完毕在打印
-      setTimeout( ()=>{
-          //打印
-          window.print();
-          //刷新页面
-          window.location.reload();
-      },20 )
+      setTimeout(() => {
+        //打印
+        window.print();
+        //刷新页面
+        window.location.reload();
+      }, 20);
     },
   },
-  created () {
-    this.fetchData()
-  }
-}
+  created() {
+    console.log(this.baseMsg, 'basemsg', this.skillRenderMsg, 'skill');
+    this.fetchData();
+  },
+};
 </script>
 
 <style scoped>
@@ -198,13 +214,18 @@ export default {
   min-height: 100px;
 }
 .tag {
- font-weight: bold; 
-}
-.skill,.intern,.project,.education
-.title {
   font-weight: bold;
 }
-.skill,.intern,.project,.education {
+.skill,
+.intern,
+.project,
+.education .title {
+  font-weight: bold;
+}
+.skill,
+.intern,
+.project,
+.education {
   text-align: left;
   display: block;
 }
@@ -222,8 +243,6 @@ export default {
 }
 .row {
   margin: 0 10px;
-
-  /* border: 1px solid green;  */
   padding: 5px 10px;
 }
 </style>
