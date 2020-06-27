@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "Header"
+  name: 'Header',
 };
 </script>
 
@@ -23,7 +23,7 @@ export default {
   background-color: #fff;
   overflow: hidden;
 }
- .router-link {
+.router-link {
   margin-left: 10px;
   padding-right: 40px;
   line-height: 56px;
@@ -37,7 +37,7 @@ export default {
   font-size: 14px;
 }
 .router-link-exact-active {
-  color: #ff4f4c !important;
-  border-bottom: 2px solid #ff4f4c;
+  color: #00c091 !important;
+  border-bottom: 2px solid #00c091;
 }
 </style>
