@@ -1,13 +1,11 @@
 <template>
   <div class="home">
-    <Header/>
+    <Header />
     <el-row :gutter="20">
       <el-col :md="6" class="left-panel">
         <ul class="left-message">
           <li v-for="(item, key) in modules" :key="key">
-            <span 
-              :class="isActive(key)" 
-              @click="jump(key)">{{ item }}</span>
+            <span :class="isActive(key)" @click="jump(key)">{{ item }}</span>
             <span class="move-delete">
               <i class="el-icon el-icon-rank"></i>
               <i class="el-icon el-icon-delete" @click="deleteModule(item)"></i>
@@ -22,7 +20,7 @@
         </ul>
       </el-col>
       <el-col :md="16" class="right-panel" :offet="1">
-        <router-view/>
+        <router-view />
       </el-col>
     </el-row>
   </div>
@@ -31,73 +29,63 @@
 <script>
 /* eslint-disable */
 
-import Header from "../components/Header.vue"
+import Header from '../components/Header.vue';
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
-    Header
+    Header,
   },
   data() {
     return {
-      modules: {}
+      modules: {},
     };
   },
-  
-  methods: {
 
+  methods: {
     // 初始化模块的相关数据
-    fetchModulesData () {
-      this.modules = this.$store.state.modules
+    fetchModulesData() {
+      this.modules = this.$store.state.modules;
     },
 
     // 当前导航被激活
-    isActive (name) {
-      if ( name === this.$router.currentRoute.name) {
-        return 'isActive'
+    isActive(name) {
+      if (name === this.$router.currentRoute.name) {
+        return 'isActive';
       }
     },
 
     // 点击下一步
-    jump (name) {
-      this.$router.push(`/${name}`)
-      return name
+    jump(name) {
+      this.$router.push(`/${name}`);
+      return name;
     },
 
     // 新增模块
-    addModule () {
-      this.$prompt(
-        "请输入自定义模块的名称",
-        "提示",
-        {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-        })
+    addModule() {
+      this.$prompt('请输入自定义模块的名称', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+      })
         .then(({ value }) => {
           this.$message({
             type: 'success',
-            message: '您输入的模块名称是: ' + value
+            message: '您输入的模块名称是: ' + value,
           });
-          this.modules.push(value)
+          this.modules.push(value);
         })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: '取消输入'
-          });       
-        })
+        .catch();
     },
 
     // 删除模块
-    deleteModule (name) {
-      this.$delete(this.modules, name)
-    }
+    deleteModule(name) {
+      this.$delete(this.modules, name);
+    },
   },
 
-  created () {
-    this.fetchModulesData()
-  }
-  
+  created() {
+    this.fetchModulesData();
+  },
 };
 </script>
 
@@ -107,24 +95,20 @@ export default {
   overflow: hidden;
 }
 .isActive {
-  color: #ff4f4c;
+  color: #00c091;
   padding-left: 12px;
-  border-left: 4px solid #ff4f4c;
+  border-left: 4px solid #00c091;
 }
-/* .router-link-exact-active {
-  color: #ff4f4c !important;
-  border-bottom: 2px solid #ff4f4c;
-} */
 .move-delete i:hover {
   color: #fff;
-  background: #409eff;
+  background: #11a480;
 }
 .move-delete i {
   margin-left: 10px;
   font-size: 14px;
   padding: 5px;
   border-radius: 5px;
-  color: #409eff;
+  color: #11a480;
   background: #fff;
 }
 .move-delete {
@@ -133,7 +117,7 @@ export default {
   position: absolute;
   right: 10px;
 }
-.left-message li:hover .move-delete{
+.left-message li:hover .move-delete {
   display: block;
 }
 .left-message li {
@@ -149,8 +133,7 @@ export default {
   position: relative;
 }
 .left-message li:hover {
-  /* color: rgb(255, 79, 76) */
-  color: #404040;
+  color: #11a480;
 }
 .left-message {
   margin: 5px;
@@ -159,8 +142,9 @@ export default {
   display: block;
   text-align: center;
 }
-.left-panel, .right-panel {
-  border: 1px solid #DEDFE1;
+.left-panel,
+.right-panel {
+  border: 1px solid #dedfe1;
   text-align: center;
   padding: 5px;
   margin: 20px;

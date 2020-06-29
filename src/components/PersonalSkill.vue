@@ -6,69 +6,92 @@
     </h3>
     <div class="content">
       <!-- vue markdown插件 -->
-      <mavon-editor 
-        class = "mavon-editor" 
-        toolbarsBackground = "#f6f8fa" 
-        @save = saveSkillMsg
-        v-model = "value" />
+      <mavon-editor
+        class="mavon-editor"
+        toolbarsBackground="#f6f8fa"
+        @change="editSkillMsg"
+        v-model="value"
+      />
+      <!-- v-model="JSON.stringify(skillMsg)" -->
     </div>
     <div>
-      <el-button @click="jump(previous)">{{previous}}</el-button>
-      <el-button @click="saveSkillHtmlCode">保存</el-button>
-      <el-button type="danger" @click="jump(next)">{{next}}</el-button>
+      <el-button type="info" @click="jump(previous)">{{ previous }}</el-button>
+      <el-button type="success" @click="saveSkillMsg">保存</el-button>
+      <el-button type="info" @click="jump(next)">{{ next }}</el-button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
-  name: "BaseMessage",
+  name: 'BaseMessage',
   data() {
     return {
-      value: "",
-      previous: "上一步",
-      next: "下一步"
+      value: '',
+      renderValue: '',
+      previous: '上一步',
+      next: '下一步',
     };
   },
+  computed: {
+    ...mapState(['skillMsg']),
+  },
+  created() {
+    console.log(sessionStorage.getItem('skillMsg'), 'msg');
+    this.value = sessionStorage.getItem('skillMsg')
+      ? JSON.parse(sessionStorage.getItem('skillMsg')).skillMsg
+      : '';
+    this.renderValue = sessionStorage.getItem('skillMsg').skillRenderMsg;
+  },
   methods: {
-
-    // 保存信息
-    saveSkillMsg (value, render) {
-      this.$store.commit("saveSkillMsg", render);
-      setTimeout(() => {
-        this.$message.success("信息保存成功")
-      }, 300)
+    editSkillMsg(value, render) {
+      this.value = value;
+      this.renderValue = render;
     },
-    saveSkillHtmlCode () {
-      this.saveSkillMsg()
+    saveSkillMsg() {
+      sessionStorage.setItem(
+        'skillMsg',
+        JSON.stringify({
+          skillMsg: this.value,
+          skillRenderMsg: this.renderValue,
+        })
+      );
+      this.$store.commit('saveSkillMsg', this.value);
+      this.$store.commit('saveSkillRenderMsg', this.renderValue);
+      this.$message({
+        type: 'success',
+        message: '信息保存成功',
+        duration: 1200,
+      });
     },
 
-     // 模块跳转
+    // 模块跳转
     jump(step) {
       const moduleKeys = Object.keys(this.$store.state.modules);
       const currentRouteName = this.$router.currentRoute.name;
-      const index = moduleKeys.findIndex(item => {
-        return item === currentRouteName
-      })
+      const index = moduleKeys.findIndex((item) => {
+        return item === currentRouteName;
+      });
       if (index < moduleKeys.length && index >= 0) {
-        if (step === "上一步") {
+        if (step === '上一步') {
           if (index === 0) {
-            return
+            return;
           }
           this.$router.push(`/${moduleKeys[index - 1]}`);
-          return
+          return;
         }
-        if (step === "下一步") {
+        if (step === '下一步') {
           if (index === moduleKeys.length - 1) {
-            this.$router.push("/preview")
-            return
+            this.$router.push('/preview');
+            return;
           }
-          this.$router.push(`/${moduleKeys[index + 1]}`)
-          return
+          this.$router.push(`/${moduleKeys[index + 1]}`);
+          return;
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
