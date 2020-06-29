@@ -10,15 +10,20 @@
         </el-row>
         <el-row class="row">
           <el-col :span="24">
-            <span class="tag">电话：</span>{{ baseMsg.phone }} |
-            <span class="tag">电话：</span>{{ baseMsg.phone }} |
-            <span class="tag">邮箱：</span>{{ baseMsg.email }} |
-            <span class="tag">地址：</span>{{ baseMsg.address }}
+            <span class="tag">电话：</span>
+            {{ baseMsg.phone }} |
+            <span class="tag">电话：</span>
+            {{ baseMsg.phone }} |
+            <span class="tag">邮箱：</span>
+            {{ baseMsg.email }} |
+            <span class="tag">地址：</span>
+            {{ baseMsg.address }}
           </el-col>
         </el-row>
         <el-row class="row">
           <el-col :span="24">
-            <span class="tag">个人网址：</span>{{ baseMsg.web }} |
+            <span class="tag">个人网址：</span>
+            {{ baseMsg.web }} |
             <span class="tag">wechat：</span> weixin1899855881
           </el-col>
         </el-row>
@@ -30,11 +35,7 @@
         </el-row>
         <el-row>
           <el-col>
-            <mavon-editor
-              class="mavon-editor"
-              v-html="skillRenderMsg"
-              :boxShadow="false"
-            />
+            <mavon-editor class="mavon-editor" v-html="skillRenderMsg" :boxShadow="false" />
           </el-col>
         </el-row>
         <el-row class="row intern">
@@ -43,22 +44,16 @@
             <hr />
           </el-col>
         </el-row>
-        <el-row v-for="(item, index) in content.internMsg" :key="index">
+        <el-row v-for="(item, index) in internMsg" :key="index">
           <el-col>
             <div class="intern-header">
               <span>{{ item.comName }}</span>
               <span class="intern-position">{{ item.comPosition }}</span>
-              <span class="intern-time">
-                {{ item.dateStart }} 至 {{ item.dateEnd }}
-              </span>
+              <span class="intern-time">{{ item.dateStart }} 至 {{ item.dateEnd }}</span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor
-              class="mavon-editor"
-              v-html="item.internValue"
-              :boxShadow="false"
-            />
+            <mavon-editor class="mavon-editor" v-html="item.renderValue" :boxShadow="false" />
           </el-col>
         </el-row>
         <el-row class="row project">
@@ -67,23 +62,17 @@
             <hr />
           </el-col>
         </el-row>
-        <el-row v-for="item in content.projectMsg" :key="item.proName">
+        <el-row v-for="item in projectMsg" :key="item.proName">
           <el-col>
             <div class="intern-header">
-              <span> {{ item.proName }} </span>
-              <span class="intern-position"> {{ item.proPosition }} </span>
-              <span class="intern-position"> {{ item.proPartment }} </span>
-              <span class="intern-time">
-                {{ item.dateStart }} 至 {{ item.dateEnd }}
-              </span>
+              <span>{{ item.proName }}</span>
+              <span class="intern-position">{{ item.proPosition }}</span>
+              <span class="intern-position">{{ item.proPartment }}</span>
+              <span class="intern-time">{{ item.dateStart }} 至 {{ item.dateEnd }}</span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor
-              class="mavon-editor"
-              v-html="item.proValue"
-              :boxShadow="false"
-            />
+            <mavon-editor class="mavon-editor" v-html="item.proValue" :boxShadow="false" />
           </el-col>
         </el-row>
 
@@ -96,33 +85,23 @@
         <el-row v-for="item in content.educationMsg" :key="item.eduSchoolName">
           <el-col>
             <div class="intern-header">
-              <span> {{ item.eduSchoolName }} </span>
-              <span class="intern-position"> {{ item.eduProfession }} </span>
-              <span class="intern-position"> {{ item.eduSecCollege }} </span>
-              <span class="intern-time">
-                {{ item.dateStart }} 至 {{ item.dateEnd }}
-              </span>
+              <span>{{ item.eduSchoolName }}</span>
+              <span class="intern-position">{{ item.eduProfession }}</span>
+              <span class="intern-position">{{ item.eduSecCollege }}</span>
+              <span class="intern-time">{{ item.dateStart }} 至 {{ item.dateEnd }}</span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor
-              class="mavon-editor"
-              v-html="item.eduValue"
-              :boxShadow="false"
-            />
+            <mavon-editor class="mavon-editor" v-html="item.eduValue" :boxShadow="false" />
           </el-col>
         </el-row>
       </el-col>
     </el-row>
     <el-row class="btn">
       <el-col>
-        <el-button type="danger" size="mini" @click="handlePreview"
-          >PDF 预览</el-button
-        >
+        <el-button type="danger" size="mini" @click="handlePreview">PDF 预览</el-button>
         <!-- <el-button type="danger" size="mini" @click="handleWindowPrint">PDF 预览</el-button> -->
-        <el-button type="danger" size="mini" @click="handleDown"
-          >PDF 下载</el-button
-        >
+        <el-button type="danger" size="mini" @click="handleDown">PDF 下载</el-button>
       </el-col>
     </el-row>
   </div>
@@ -138,7 +117,7 @@ export default {
   components: {
     Header,
   },
-  data() {
+  data () {
     return {
       content: '',
       value: '',
@@ -154,20 +133,20 @@ export default {
     ]),
   },
   methods: {
-    fetchData() {
+    fetchData () {
       this.content = this.$store.state;
     },
 
-    handlePreview() {
+    handlePreview () {
       this.$message.info('该功能正在开发中。。。');
     },
 
-    handleDown() {
+    handleDown () {
       htmlToPdf.downloadPDF(document.querySelector('#resume'));
     },
 
     //浏览器方式打印
-    handleWindowPrint() {
+    handleWindowPrint () {
       document.body.innerHTML = document.querySelector('#resume').outerHTML;
       //转异步 等待dom元素渲染（样式）完毕在打印
       setTimeout(() => {
@@ -178,8 +157,8 @@ export default {
       }, 20);
     },
   },
-  created() {
-    console.log(this.baseMsg, 'basemsg', this.skillRenderMsg, 'skill');
+  created () {
+    console.log(this.internMsg, 'inter');
     this.fetchData();
   },
 };

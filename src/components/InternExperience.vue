@@ -40,43 +40,35 @@
         </el-col>
         <el-col class="line" :span="2">-</el-col>
         <el-col :span="9">
-          <el-date-picker
-            placeholder="结束时间（YYYY-MM）"
-            v-model="form.dateEnd"
-            style="width: 100%;"
-          ></el-date-picker>
+          <el-date-picker placeholder="结束时间（YYYY-MM）" v-model="form.dateEnd" style="width: 100%;"></el-date-picker>
         </el-col>
       </el-form-item>
       <el-row>
         <el-col :span="20">
           <el-form-item>
-            <el-tag type="info" style="float:left"
-              >工作内容 （点击填写框即可显示案例和关键词）</el-tag
-            >
+            <el-tag type="info" style="float:left">工作内容 （点击填写框即可显示案例和关键词）</el-tag>
           </el-form-item>
           <el-form-item>
             <mavon-editor
               class="mavon-editor"
               toolbarsBackground="#f6f8fa"
               @change="editWorkMsg"
-              v-model="value"
+              v-model="form.value"
             />
           </el-form-item>
         </el-col>
       </el-row>
       <el-form-item>
         <el-button style="float:left; color:#9c9c9c" size="medium" type="text">
-          <el-icon
-            class="el-icon-plus"
-            style="color:#00c091; font-weight:bold"
-          ></el-icon>
-          添加更多工作经历
+          <el-icon class="el-icon-plus" style="color:#00c091; font-weight:bold"></el-icon>添加更多工作经历
         </el-button>
       </el-form-item>
       <el-form-item>
-        <el-button @click="jump(previous)" type="info">{{
+        <el-button @click="jump(previous)" type="info">
+          {{
           previous
-        }}</el-button>
+          }}
+        </el-button>
         <el-button @click="saveInternMsg" type="success">保存</el-button>
         <el-button @click="jump(next)" type="info">{{ next }}</el-button>
       </el-form-item>
@@ -87,7 +79,7 @@
 <script>
 export default {
   name: 'BaseMessage',
-  data() {
+  data () {
     return {
       form: {
         name: '',
@@ -96,24 +88,20 @@ export default {
         dateEnd: '',
         position: '',
         partment: '',
-        internValue: '',
+        value: '',
+        renderValue: ''
       },
-      value: '',
       previous: '上一步',
       next: '下一步',
     };
   },
 
   computed: {
-    editWorkMsg(value) {
-      console.log(value);
-      // this.form.internValue = htmlCode;
-    },
   },
 
   methods: {
     // 初始化数据
-    fetchInternExpData() {
+    fetchInternExpData () {
       const internData = this.$store.state.internMsg;
       this.form.name = internData.comName;
       this.form.address = internData.comAddress;
@@ -121,20 +109,29 @@ export default {
       this.form.partment = internData.comPartment;
       this.form.dateStart = internData.dateStart;
       this.form.dateEnd = internData.dateEnd;
-      this.form.internValue = internData.internValue;
+      this.form.value = internData.value;
+      this.form.renderValue = internData.renderValue;
+    },
+
+    editWorkMsg (value, render) {
+      this.$store.commit('saveInternMsg', this.form);
+      this.form.value = value
+      this.form.renderValue = render
+      sessionStorage.setItem('workExp', JSON.stringify(this.form));
+      // console.log(this.form, 'form', render, 'render');
     },
 
     // 保存数据
-    saveInternMsg() {
-      console.log(this.form.internValue);
+    saveInternMsg () {
       this.$store.commit('saveInternMsg', this.form);
+      sessionStorage.setItem('workExp', JSON.stringify(this.form));
       setTimeout(() => {
         this.$message.success('信息保存成功');
       }, 300);
     },
 
     // 模块跳转
-    jump(step) {
+    jump (step) {
       const moduleKeys = Object.keys(this.$store.state.modules);
       const currentRouteName = this.$router.currentRoute.name;
       const index = moduleKeys.findIndex((item) => {
@@ -149,6 +146,7 @@ export default {
           return;
         }
         if (step === '下一步') {
+          this.saveInternMsg()
           if (index === moduleKeys.length - 1) {
             this.$router.push('/preview');
             return;
@@ -160,7 +158,7 @@ export default {
     },
   },
 
-  mounted() {
+  mounted () {
     this.fetchInternExpData();
   },
 };

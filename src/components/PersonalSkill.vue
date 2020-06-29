@@ -26,7 +26,7 @@
 import { mapState } from 'vuex';
 export default {
   name: 'BaseMessage',
-  data() {
+  data () {
     return {
       value: '',
       renderValue: '',
@@ -37,19 +37,16 @@ export default {
   computed: {
     ...mapState(['skillMsg']),
   },
-  created() {
-    console.log(sessionStorage.getItem('skillMsg'), 'msg');
-    this.value = sessionStorage.getItem('skillMsg')
-      ? JSON.parse(sessionStorage.getItem('skillMsg')).skillMsg
-      : '';
-    this.renderValue = sessionStorage.getItem('skillMsg').skillRenderMsg;
+  created () {
+    this.value = this.skillMsg;
+    this.renderValue = this.skillMsg.skillRenderMsg;
   },
   methods: {
-    editSkillMsg(value, render) {
+    editSkillMsg (value, render) {
       this.value = value;
       this.renderValue = render;
     },
-    saveSkillMsg() {
+    saveSkillMsg () {
       sessionStorage.setItem(
         'skillMsg',
         JSON.stringify({
@@ -67,7 +64,7 @@ export default {
     },
 
     // 模块跳转
-    jump(step) {
+    jump (step) {
       const moduleKeys = Object.keys(this.$store.state.modules);
       const currentRouteName = this.$router.currentRoute.name;
       const index = moduleKeys.findIndex((item) => {

@@ -20,18 +20,12 @@
       <el-row>
         <el-col :span="10">
           <el-form-item>
-            <el-input
-              v-model="form.proPosition"
-              placeholder="你的职位"
-            ></el-input>
+            <el-input v-model="form.proPosition" placeholder="你的职位"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="10">
           <el-form-item>
-            <el-input
-              v-model="form.proPartment"
-              placeholder="所在部门"
-            ></el-input>
+            <el-input v-model="form.proPartment" placeholder="所在部门"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -46,11 +40,7 @@
         </el-col>
         <el-col class="line" :span="2">-</el-col>
         <el-col :span="9">
-          <el-date-picker
-            placeholder="结束时间（YYYY-MM）"
-            v-model="form.dateEnd"
-            style="width: 100%;"
-          ></el-date-picker>
+          <el-date-picker placeholder="结束时间（YYYY-MM）" v-model="form.dateEnd" style="width: 100%;"></el-date-picker>
         </el-col>
       </el-form-item>
       <el-row>
@@ -72,17 +62,15 @@
       </el-row>
       <el-form-item>
         <el-button style="float:left; color:#9c9c9c" size="medium" type="text">
-          <el-icon
-            class="el-icon-plus"
-            style="color:#00c091; font-weight:bold"
-          ></el-icon>
-          添加更多项目经历
+          <el-icon class="el-icon-plus" style="color:#00c091; font-weight:bold"></el-icon>添加更多项目经历
         </el-button>
       </el-form-item>
       <el-form-item>
-        <el-button @click="jump(previous)" type="info">{{
+        <el-button @click="jump(previous)" type="info">
+          {{
           previous
-        }}</el-button>
+          }}
+        </el-button>
         <el-button @click="saveProjectMsg" type="success">保存</el-button>
         <el-button @click="jump(next)" type="info">{{ next }}</el-button>
       </el-form-item>
@@ -93,7 +81,7 @@
 <script>
 export default {
   name: 'ProjectExp',
-  data() {
+  data () {
     return {
       form: {
         proName: '',
@@ -110,17 +98,17 @@ export default {
   },
 
   methods: {
-    handleChange(value, htmlCode) {
+    handleChange (value, htmlCode) {
       this.form.proValue = htmlCode;
     },
 
-    saveProjectMsg() {
+    saveProjectMsg () {
       this.$store.commit('saveProjectMsg', this.form);
       this.$message.success('信息保存成功！');
     },
 
     // 模块跳转
-    jump(step) {
+    jump (step) {
       const moduleKeys = Object.keys(this.$store.state.modules);
       const currentRouteName = this.$router.currentRoute.name;
       const index = moduleKeys.findIndex((item) => {

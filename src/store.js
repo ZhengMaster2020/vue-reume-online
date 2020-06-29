@@ -24,11 +24,17 @@ const state = {
         web: 'www.baidu.com',
       },
   skillMsg: sessionStorage.getItem('skillMsg')
-    ? JSON.parse(sessionStorage.getItem('skillMsg'))
-    : undefined,
+    ? JSON.parse(sessionStorage.getItem('skillMsg')).skillMsg
+    : `
++ 扎实的前端基础,HTML5/CSS3;
++ 熟练使用至少一种JS框架，熟练Reactjs、Vue等，掌握其原理，能独立开发常用组件；
++ 熟练掌握盒模型、常用布局以及浏览器和移动设备兼容性；
++ 熟悉前端自动化和工程化；对Webpack、fis3、Gulp等常见构建工+ 具有自己的认知与理解；
++ 熟悉NodeJS开发，熟练使用Git；有hybird开发经验优先；`,
   skillRenderMsg: sessionStorage.getItem('skillMsg')
     ? JSON.parse(sessionStorage.getItem('skillMsg')).skillRenderMsg
-    : `<ul>
+    : `
+    <ul>
         <li>扎实的前端基础,HTML5/CSS3;</li>
       <li>
         熟练使用至少一种JS框架，熟练Reactjs、Vue等，掌握其原理，能独立开发常用组件；
@@ -47,7 +53,8 @@ const state = {
       comPartment: '研发部',
       dateStart: '2019-06',
       dateEnd: '2019-09',
-      internValue: `<ul> 
+      value: '',
+      renderValue: `<ul> 
     <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
     <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
     <li>编写自己的项目脚手架，并独立完成项目的整体页面结构及样式层结构的设计与实现</li> 
@@ -63,7 +70,8 @@ const state = {
       comPartment: '研发部',
       dateStart: '2019-06',
       dateEnd: '2019-09',
-      internValue: `<ul> 
+      value: '',
+      renderValue: `<ul> 
     <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
     <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
     <li>使用npm和Webpack从零搭建Vue项目架构，从而使用Vue技术栈完成简单的用户管理系统</li> 
@@ -174,7 +182,8 @@ const mutations = {
     internMsg.comPartment = intern.partment;
     internMsg.dateStart = intern.dateStart;
     internMsg.dateEnd = intern.dateEnd;
-    internMsg.internValue = intern.internValue;
+    internMsg.value = intern.value;
+    internMsg.renderValue = intern.renderValue;
   },
 
   saveProjectMsg(state, project) {
