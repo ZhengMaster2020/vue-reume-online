@@ -15,13 +15,30 @@ const state = {
   },
   baseMsg: sessionStorage.getItem('baseMsg')
     ? JSON.parse(sessionStorage.getItem('baseMsg'))
-    : {},
+    : {
+        address: '广州',
+        email: '789456@qq.com',
+        name: 'zhengmaster',
+        phone: '13415645795',
+        position: '全栈工程师',
+        web: 'www.baidu.com',
+      },
   skillMsg: sessionStorage.getItem('skillMsg')
     ? JSON.parse(sessionStorage.getItem('skillMsg'))
     : undefined,
   skillRenderMsg: sessionStorage.getItem('skillMsg')
     ? JSON.parse(sessionStorage.getItem('skillMsg')).skillRenderMsg
-    : undefined,
+    : `<ul>
+        <li>扎实的前端基础,HTML5/CSS3;</li>
+      <li>
+        熟练使用至少一种JS框架，熟练Reactjs、Vue等，掌握其原理，能独立开发常用组件；
+      </li>
+      <li>熟练掌握盒模型、常用布局以及浏览器和移动设备兼容性；</li>
+      <li>
+        熟悉前端自动化和工程化；对Webpack、fis3、Gulp等常见构建工具有自己的认知与理解；
+      </li>
+      <li>熟悉NodeJS开发，熟练使用Git；有hybird开发经验优先；</li>
+    </ul>`,
   internMsg: [
     {
       comName: '深圳蝌蚪科技有限公司',
