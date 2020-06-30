@@ -16,6 +16,7 @@
 + 怎么实现的下载文档功能，以及如何生成PDF格式的简历文件？
 + 项目中是怎么封装组件的，有什么思路或者步骤？
 + 该项目为单纯的前端项目，是如何实现数据持久化的？
++ 项目的即时渲染技术，也就是数据双向绑定，使用了**观察者模式**
 
 ## 项目技术栈:black_flag:
 
@@ -29,6 +30,16 @@
 | mavon-editor | vue插件 markdown编辑器 | [https://github.com/hinesboy/mavonEditor](https://github.com/hinesboy/mavonEditor)       |
 | html2canvas  | 将html生成图片         | [https://github.com/niklasvh/html2canvas](https://github.com/niklasvh/html2canvas)       |
 | jspdf        | 将图片转换成PDF文档    | [https://mozilla.github.io/pdf.js/examples/](https://mozilla.github.io/pdf.js/examples/) |
+
+
+## 观察者模式（Observer Pattern）
+观察者模式（发布-订阅模式）观察者们监听对象Subject属性的变化，若有变化则Subject则触发notify()方法；这个方法就触发Observer的update()监听回调方法，取完成某些操作。
++ Observer 观察者
+  + 属性： name(自身名字) subject(被观察者)
+  + 方法： update() 
++ Subject 被观察者
+  + 属性： state(状态) obervers(观察者们， 数组)
+  + 方法：getState() setState() attach() notify() 
 
 **以下是该项目的安装运行步骤**:arrow_down_small:
 
