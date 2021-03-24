@@ -24,31 +24,11 @@ export default new Router({
       redirect: '/base',
       component: Home,
       children: [
-        {
-          path: '/base',
-          name: 'base',
-          component: BaseMessage
-        },
-        {
-          path: '/skill',
-          name: 'skill',
-          component: PersonalSkill
-        },
-        {
-          path: '/intern',
-          name: 'intern',
-          component: InternExperience
-        },
-        {
-          path: '/education',
-          name: 'education',
-          component: EducationExperience
-        },
-        {
-          path: '/project',
-          name: 'project',
-          component: ProjectExperience
-        }
+        { path: '/base', name: 'base', component: BaseMessage },
+        { path: '/skill', name: 'skill', component: PersonalSkill },
+        { path: '/intern', name: 'intern', component: InternExperience },
+        { path: '/education', name: 'education', component: EducationExperience },
+        { path: '/project', name: 'project', component: ProjectExperience }
       ]
     },
     {

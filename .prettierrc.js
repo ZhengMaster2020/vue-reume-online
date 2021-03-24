@@ -4,13 +4,5 @@ module.exports = {
   tabWidth: 2,
   printWidth: 100,
   useTabs: false,
-  trailingComma: 'none',
-  overrides: [
-    {
-      files: '.prettierrc',
-      options: {
-        parser: 'json'
-      }
-    }
-  ]
+  trailingComma: 'none'
 }

@@ -66,17 +66,12 @@
       </el-row>
       <el-form-item>
         <el-button style="float:left; color:#9c9c9c" size="medium" type="text">
-          <el-icon
-            class="el-icon-plus"
-            style="color:#00c091; font-weight:bold"
-          ></el-icon>
+          <el-icon class="el-icon-plus" style="color:#00c091; font-weight:bold"></el-icon>
           添加更多工作经历
         </el-button>
       </el-form-item>
       <el-form-item>
-        <el-button @click="jump(previous)" type="info">{{
-          previous
-        }}</el-button>
+        <el-button @click="jump(previous)" type="info">{{ previous }}</el-button>
         <el-button @click="saveInternMsg" type="success">保存</el-button>
         <el-button @click="jump(next)" type="info">{{ next }}</el-button>
       </el-form-item>
@@ -96,74 +91,75 @@ export default {
         dateEnd: '',
         position: '',
         partment: '',
-        internValue: '',
+        internValue: ''
       },
       value: '',
       previous: '上一步',
-      next: '下一步',
-    };
+      next: '下一步'
+    }
   },
 
   computed: {
     editWorkMsg(value) {
-      console.log(value);
+      console.log(value)
       // this.form.internValue = htmlCode;
-    },
+      return ''
+    }
   },
 
   methods: {
     // 初始化数据
     fetchInternExpData() {
-      const internData = this.$store.state.internMsg;
-      this.form.name = internData.comName;
-      this.form.address = internData.comAddress;
-      this.form.position = internData.comPosition;
-      this.form.partment = internData.comPartment;
-      this.form.dateStart = internData.dateStart;
-      this.form.dateEnd = internData.dateEnd;
-      this.form.internValue = internData.internValue;
+      const internData = this.$store.state.internMsg
+      this.form.name = internData.comName
+      this.form.address = internData.comAddress
+      this.form.position = internData.comPosition
+      this.form.partment = internData.comPartment
+      this.form.dateStart = internData.dateStart
+      this.form.dateEnd = internData.dateEnd
+      this.form.internValue = internData.internValue
     },
 
     // 保存数据
     saveInternMsg() {
-      console.log(this.form.internValue);
-      this.$store.commit('saveInternMsg', this.form);
+      console.log(this.form.internValue)
+      this.$store.commit('saveInternMsg', this.form)
       setTimeout(() => {
-        this.$message.success('信息保存成功');
-      }, 300);
+        this.$message.success('信息保存成功')
+      }, 300)
     },
 
     // 模块跳转
     jump(step) {
-      const moduleKeys = Object.keys(this.$store.state.modules);
-      const currentRouteName = this.$router.currentRoute.name;
-      const index = moduleKeys.findIndex((item) => {
-        return item === currentRouteName;
-      });
+      const moduleKeys = Object.keys(this.$store.state.modules)
+      const currentRouteName = this.$router.currentRoute.name
+      const index = moduleKeys.findIndex(item => {
+        return item === currentRouteName
+      })
       if (index < moduleKeys.length && index >= 0) {
         if (step === '上一步') {
           if (index === 0) {
-            return;
+            return
           }
-          this.$router.push(`/${moduleKeys[index - 1]}`);
-          return;
+          this.$router.push(`/${moduleKeys[index - 1]}`)
+          return
         }
         if (step === '下一步') {
           if (index === moduleKeys.length - 1) {
-            this.$router.push('/preview');
-            return;
+            this.$router.push('/preview')
+            return
           }
-          this.$router.push(`/${moduleKeys[index + 1]}`);
-          return;
+          this.$router.push(`/${moduleKeys[index + 1]}`)
+          return
         }
       }
-    },
+    }
   },
 
   mounted() {
-    this.fetchInternExpData();
-  },
-};
+    this.fetchInternExpData()
+  }
+}
 </script>
 
 <style scoped>
