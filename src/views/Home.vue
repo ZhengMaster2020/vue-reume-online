@@ -29,64 +29,64 @@
 <script>
 /* eslint-disable */
 
-import Header from '../components/Header.vue';
+import Header from '../components/Header.vue'
 
 export default {
   name: 'home',
   components: {
-    Header,
+    Header
   },
   data() {
     return {
-      modules: {},
-    };
+      modules: {}
+    }
   },
 
   methods: {
     // 初始化模块的相关数据
     fetchModulesData() {
-      this.modules = this.$store.state.modules;
+      this.modules = this.$store.state.modules
     },
 
     // 当前导航被激活
     isActive(name) {
       if (name === this.$router.currentRoute.name) {
-        return 'isActive';
+        return 'isActive'
       }
     },
 
     // 点击下一步
     jump(name) {
-      this.$router.push(`/${name}`);
-      return name;
+      this.$router.push(`/${name}`)
+      return name
     },
 
     // 新增模块
     addModule() {
       this.$prompt('请输入自定义模块的名称', '提示', {
         confirmButtonText: '确定',
-        cancelButtonText: '取消',
+        cancelButtonText: '取消'
       })
         .then(({ value }) => {
           this.$message({
             type: 'success',
-            message: '您输入的模块名称是: ' + value,
-          });
-          this.modules.push(value);
+            message: '您输入的模块名称是: ' + value
+          })
+          this.modules.push(value)
         })
-        .catch();
+        .catch()
     },
 
     // 删除模块
     deleteModule(name) {
-      this.$delete(this.modules, name);
-    },
+      this.$delete(this.modules, name)
+    }
   },
 
   created() {
-    this.fetchModulesData();
-  },
-};
+    this.fetchModulesData()
+  }
+}
 </script>
 
 <style scoped>

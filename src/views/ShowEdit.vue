@@ -10,9 +10,8 @@
         </el-row>
         <el-row class="row">
           <el-col :span="24">
-            <span class="tag">电话：</span>{{ baseMsg.phone }} |
-            <span class="tag">电话：</span>{{ baseMsg.phone }} |
-            <span class="tag">邮箱：</span>{{ baseMsg.email }} |
+            <span class="tag">电话：</span>{{ baseMsg.phone }} | <span class="tag">电话：</span
+            >{{ baseMsg.phone }} | <span class="tag">邮箱：</span>{{ baseMsg.email }} |
             <span class="tag">地址：</span>{{ baseMsg.address }}
           </el-col>
         </el-row>
@@ -23,18 +22,16 @@
           </el-col>
         </el-row>
         <el-row class="row skill">
-          <el-col>
-            <h2 class="title">专业技能</h2>
+          <el-col
+            ><h2 class="title">
+              专业技能
+            </h2>
             <hr />
           </el-col>
         </el-row>
         <el-row>
           <el-col>
-            <mavon-editor
-              class="mavon-editor"
-              v-html="skillRenderMsg"
-              :boxShadow="false"
-            />
+            <mavon-editor class="mavon-editor" v-html="skillRenderMsg" :boxShadow="false" />
           </el-col>
         </el-row>
         <el-row class="row intern">
@@ -48,17 +45,11 @@
             <div class="intern-header">
               <span>{{ item.comName }}</span>
               <span class="intern-position">{{ item.comPosition }}</span>
-              <span class="intern-time">
-                {{ item.dateStart }} 至 {{ item.dateEnd }}
-              </span>
+              <span class="intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor
-              class="mavon-editor"
-              v-html="item.internValue"
-              :boxShadow="false"
-            />
+            <mavon-editor class="mavon-editor" v-html="item.internValue" :boxShadow="false" />
           </el-col>
         </el-row>
         <el-row class="row project">
@@ -73,17 +64,11 @@
               <span> {{ item.proName }} </span>
               <span class="intern-position"> {{ item.proPosition }} </span>
               <span class="intern-position"> {{ item.proPartment }} </span>
-              <span class="intern-time">
-                {{ item.dateStart }} 至 {{ item.dateEnd }}
-              </span>
+              <span class="intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor
-              class="mavon-editor"
-              v-html="item.proValue"
-              :boxShadow="false"
-            />
+            <mavon-editor class="mavon-editor" v-html="item.proValue" :boxShadow="false" />
           </el-col>
         </el-row>
 
@@ -99,90 +84,73 @@
               <span> {{ item.eduSchoolName }} </span>
               <span class="intern-position"> {{ item.eduProfession }} </span>
               <span class="intern-position"> {{ item.eduSecCollege }} </span>
-              <span class="intern-time">
-                {{ item.dateStart }} 至 {{ item.dateEnd }}
-              </span>
+              <span class="intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
             </div>
           </el-col>
           <el-col>
-            <mavon-editor
-              class="mavon-editor"
-              v-html="item.eduValue"
-              :boxShadow="false"
-            />
+            <mavon-editor class="mavon-editor" v-html="item.eduValue" :boxShadow="false" />
           </el-col>
         </el-row>
       </el-col>
     </el-row>
     <el-row class="btn">
       <el-col>
-        <el-button type="danger" size="mini" @click="handlePreview"
-          >PDF 预览</el-button
-        >
+        <el-button type="danger" size="mini" @click="handlePreview">PDF 预览</el-button>
         <!-- <el-button type="danger" size="mini" @click="handleWindowPrint">PDF 预览</el-button> -->
-        <el-button type="danger" size="mini" @click="handleDown"
-          >PDF 下载</el-button
-        >
+        <el-button type="danger" size="mini" @click="handleDown">PDF 下载</el-button>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import Header from '../components/Header.vue';
-import htmlToPdf from '../utils/htmlToPdf';
-import { async } from 'q';
+import { mapState } from 'vuex'
+import Header from '../components/Header.vue'
+import htmlToPdf from '../utils/htmlToPdf'
 
 export default {
   components: {
-    Header,
+    Header
   },
   data() {
     return {
       content: '',
-      value: '',
-    };
+      value: ''
+    }
   },
   computed: {
-    ...mapState([
-      'baseMsg',
-      'skillMsg',
-      'skillRenderMsg',
-      'internMsg',
-      'projectMsg',
-    ]),
+    ...mapState(['baseMsg', 'skillMsg', 'skillRenderMsg', 'internMsg', 'projectMsg'])
   },
   methods: {
     fetchData() {
-      this.content = this.$store.state;
+      this.content = this.$store.state
     },
 
     handlePreview() {
-      this.$message.info('该功能正在开发中。。。');
+      this.$message.info('该功能正在开发中。。。')
     },
 
     handleDown() {
-      htmlToPdf.downloadPDF(document.querySelector('#resume'));
+      htmlToPdf.downloadPDF(document.querySelector('#resume'))
     },
 
     //浏览器方式打印
     handleWindowPrint() {
-      document.body.innerHTML = document.querySelector('#resume').outerHTML;
+      document.body.innerHTML = document.querySelector('#resume').outerHTML
       //转异步 等待dom元素渲染（样式）完毕在打印
       setTimeout(() => {
         //打印
-        window.print();
+        window.print()
         //刷新页面
-        window.location.reload();
-      }, 20);
-    },
+        window.location.reload()
+      }, 20)
+    }
   },
   created() {
-    console.log(this.baseMsg, 'basemsg', this.skillRenderMsg, 'skill');
-    this.fetchData();
-  },
-};
+    console.log(this.baseMsg, 'basemsg', this.skillRenderMsg, 'skill')
+    this.fetchData()
+  }
+}
 </script>
 
 <style scoped>
