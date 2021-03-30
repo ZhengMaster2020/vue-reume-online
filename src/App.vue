@@ -1,6 +1,8 @@
 <template>
   <div id="app" class="default-theme">
-    <router-view />
+    <transition name="fade" mode="out-in">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -15,5 +17,16 @@
 .el-button--success:hover {
   background-color: #11a480 !important;
   border-color: #11a480 !important;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
