@@ -9,18 +9,50 @@
       <div class="login-wrap-form">
         <h2 class="title">用户登录</h2>
         <div>
-          <el-form class="form" ref="form" :model="form">
-            <el-form-item>
-              <el-input v-model="form.name" placeholder="请输入用户名"></el-input>
+          <el-form status-icon class="form" ref="form" :model="form">
+            <el-form-item
+              prop="name"
+              :rules="{ required: true, message: '用户名不能为空', trigger: 'blur' }"
+            >
+              <el-input
+                clearable
+                v-model.trim="form.name"
+                placeholder="请输入用户名"
+                @change="handleBtnStatus"
+              />
+            </el-form-item>
+            <el-form-item
+              prop="password"
+              :rules="{ required: true, message: '密码不能为空', trigger: 'blur' }"
+            >
+              <el-input
+                clearable
+                type="password"
+                v-model.trim="form.password"
+                placeholder="请输入密码"
+                @change="handleBtnStatus"
+              />
             </el-form-item>
             <el-form-item>
-              <el-input v-model="form.password" placeholder="请输入密码"></el-input>
+              <el-button
+                class="btn"
+                type="success"
+                :disabled="loginBtnDisabled"
+                :loading="btnLoading"
+                @click="onSave('form')"
+              >
+                登录
+              </el-button>
+              <el-button
+                class="btn"
+                type="default"
+                :disabled="btnDisabled"
+                @click="onReset('form')"
+              >
+                重置
+              </el-button>
             </el-form-item>
           </el-form>
-          <div>
-            <el-button class="btn" type="success">登录</el-button>
-            <el-button class="btn" type="default">重置</el-button>
-          </div>
         </div>
       </div>
     </div>
@@ -35,7 +67,38 @@ export default {
   data() {
     return {
       bgImgArr: [bgImgOne, bgImgTwo],
-      form: {}
+      form: { name: '', password: '' },
+      btnLoading: false,
+      btnDisabled: true,
+      loginBtnDisabled: true
+    }
+  },
+
+  methods: {
+    handleBtnStatus() {
+      const { name, password } = this.form
+      this.loginBtnDisabled = name && password ? false : true
+      this.btnDisabled = name || password ? false : true
+    },
+
+    onSave(name) {
+      this.$refs[name].validate(valid => {
+        if (valid) {
+          this.btnLoading = true
+          setTimeout(() => {
+            this.btnLoading = false
+            this.$message.success('登录成功！')
+            this.$router.push('/')
+          }, 500)
+        }
+      })
+    },
+
+    onReset(name) {
+      this.$refs[name].resetFields()
+      this.btnDisabled = true
+      this.loginBtnDisabled = true
+      this.btnLoading = false
     }
   }
 }
