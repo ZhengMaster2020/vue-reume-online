@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import Cookies from 'js-cookies'
 import bgImgOne from '@/assets/images/banner1.png'
 import bgImgTwo from '@/assets/images/banner2.png'
 
@@ -87,6 +88,8 @@ export default {
           this.btnLoading = true
           setTimeout(() => {
             this.btnLoading = false
+            console.log('ssss,', Cookies)
+            Cookies.setItem('userInfo', JSON.stringify(this.form), { expires: 3 })
             this.$message.success('登录成功！')
             this.$router.push('/')
           }, 500)

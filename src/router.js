@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Cookies from 'js-cookies'
 import Home from './views/Home'
 
 Vue.use(Router)
@@ -14,7 +15,7 @@ const EducationExperience = () =>
 const ProjectExperience = () =>
   import(/* webpackChunkName: "projectMsg" */ './components/ProjectExperience.vue')
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: '/',
   routes: [
@@ -43,3 +44,13 @@ export default new Router({
     }
   ]
 })
+
+// 路由权限验证 有权限进入系统 无权限则跳转登录页
+router.beforeEach((to, from, next) => {
+  const userInfo = JSON.parse(Cookies.getItem('userInfo'))
+  if (to.name !== 'login' && !userInfo) {
+    next({ path: '/login', name: 'login' })
+  } else next()
+})
+
+export default router
