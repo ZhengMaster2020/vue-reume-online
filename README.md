@@ -54,19 +54,34 @@ cd vue-resume-online
 ## 安装依赖
 
 ```
+建议： 淘宝镜像
+cnpm i
+
 npm install
+
+或
+
+yarn
 ```
 
 ### 启动项目
 
 ```
-npm run serve
+npm run dev
+
+或
+
+yarn dev
 ```
 
 ### 打包项目
 
 ```
 npm run build
+
+或
+
+yarn build
 ```
 
 ### Customize configuration

@@ -1,9 +1,12 @@
 <template>
-  <div id="app">
+  <div id="app" class="default-theme">
     <router-view />
   </div>
 </template>
+
 <style lang="less">
+@import './assets/css/common.less';
+
 .el-button--success {
   color: #fff;
   background-color: #00c091 !important;
