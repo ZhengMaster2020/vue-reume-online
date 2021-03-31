@@ -4,7 +4,7 @@
 
 ## 💻 ​ 项目演示
 
-![system.gif](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/29c5813fc5d64ddc95311d26c0ca84fc~tplv-k3u1fbpfcp-watermark.image)
+![system.gif loading error](./src/assets/images/system.gif)
 
 ## 😣 ​ 项目难点
 
@@ -121,7 +121,7 @@
       </script>
       ```
 
-![login.gif](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7b0f88ae8813485aa68aca41ed849eea~tplv-k3u1fbpfcp-watermark.image)
+![login.gif loading error](./src/assets/images/login.gif)
 
 ## ✍ 项目技术栈
 
