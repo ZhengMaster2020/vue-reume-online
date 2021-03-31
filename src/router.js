@@ -40,7 +40,7 @@ const router = new Router({
     {
       path: '/preview',
       name: 'preview',
-      component: () => import(/* webpackChunkName: "showEdit" */ './views/ShowEdit.vue')
+      component: () => import(/* webpackChunkName: "showEdit" */ './views/ShowEdit')
     }
   ]
 })

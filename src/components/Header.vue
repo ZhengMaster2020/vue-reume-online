@@ -11,11 +11,11 @@
 
 <script>
 export default {
-  name: 'Header',
-};
+  name: 'Header'
+}
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .header {
   width: 100%;
   height: 56px;
@@ -23,12 +23,14 @@ export default {
   background-color: #fff;
   overflow: hidden;
 }
+
 .router-link {
   margin-left: 10px;
   padding-right: 40px;
   line-height: 56px;
   display: inline-block;
 }
+
 .router-link a {
   display: block;
   color: #404040;
@@ -36,6 +38,7 @@ export default {
   text-decoration: none;
   font-size: 14px;
 }
+
 .router-link-exact-active {
   color: #00c091 !important;
   border-bottom: 2px solid #00c091;
