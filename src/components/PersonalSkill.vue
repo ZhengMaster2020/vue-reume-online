@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from 'vuex'
 export default {
   name: 'BaseMessage',
   data() {
@@ -31,68 +31,65 @@ export default {
       value: '',
       renderValue: '',
       previous: '上一步',
-      next: '下一步',
-    };
+      next: '下一步'
+    }
   },
+
   computed: {
-    ...mapState(['skillMsg']),
+    ...mapState(['skillMsg'])
   },
+
   created() {
-    console.log(sessionStorage.getItem('skillMsg'), 'msg');
-    this.value = sessionStorage.getItem('skillMsg')
-      ? JSON.parse(sessionStorage.getItem('skillMsg')).skillMsg
-      : '';
-    this.renderValue = sessionStorage.getItem('skillMsg').skillRenderMsg;
+    const skillMsg = sessionStorage.getItem('skillMsg')
+    if (skillMsg) {
+      this.value = JSON.parse(skillMsg).skillMsg
+      this.renderValue = skillMsg.skillRenderMsg
+    }
   },
+
   methods: {
     editSkillMsg(value, render) {
-      this.value = value;
-      this.renderValue = render;
+      this.value = value
+      this.renderValue = render
     },
+
     saveSkillMsg() {
       sessionStorage.setItem(
         'skillMsg',
-        JSON.stringify({
-          skillMsg: this.value,
-          skillRenderMsg: this.renderValue,
-        })
-      );
-      this.$store.commit('saveSkillMsg', this.value);
-      this.$store.commit('saveSkillRenderMsg', this.renderValue);
-      this.$message({
-        type: 'success',
-        message: '信息保存成功',
-        duration: 1200,
-      });
+        JSON.stringify({ skillMsg: this.value, skillRenderMsg: this.renderValue })
+      )
+      this.$store.commit('saveSkillMsg', this.value)
+      this.$store.commit('saveSkillRenderMsg', this.renderValue)
+      this.$message({ type: 'success', message: '信息保存成功', duration: 1200 })
     },
 
     // 模块跳转
     jump(step) {
-      const moduleKeys = Object.keys(this.$store.state.modules);
-      const currentRouteName = this.$router.currentRoute.name;
-      const index = moduleKeys.findIndex((item) => {
-        return item === currentRouteName;
-      });
+      const moduleKeys = Object.keys(this.$store.state.modules)
+      const currentRouteName = this.$router.currentRoute.name
+      const index = moduleKeys.findIndex(item => {
+        return item === currentRouteName
+      })
       if (index < moduleKeys.length && index >= 0) {
         if (step === '上一步') {
           if (index === 0) {
-            return;
+            return
           }
-          this.$router.push(`/${moduleKeys[index - 1]}`);
-          return;
+          this.$router.push(`/${moduleKeys[index - 1]}`)
+          return
         }
         if (step === '下一步') {
           if (index === moduleKeys.length - 1) {
-            this.$router.push('/preview');
-            return;
+            this.$router.push('/preview')
+            return
           }
-          this.$router.push(`/${moduleKeys[index + 1]}`);
-          return;
+          this.$router.push(`/${moduleKeys[index + 1]}`)
+          return
         }
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
