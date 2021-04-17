@@ -1,7 +1,11 @@
 <template>
   <div class="header">
     <div class="left">
-      <el-dropdown @command="handleDropMenuClick">
+      <el-dropdown trigger="click" class="dropdown" @command="handleDropMenuClick">
+        <i
+          :class="['el-icon-caret-bottom', 'arrow-icon', arrowIconDown && 'icon-rotate']"
+          @click="handleIconClick"
+        />
         <el-avatar class="avatar" :size="40" :src="imgSrc" @error="() => true">
           <img
             class="img"
@@ -32,6 +36,7 @@ export default {
   name: 'Header',
   data() {
     return {
+      arrowIconDown: false,
       imgSrc: ''
     }
   },
@@ -41,6 +46,10 @@ export default {
   },
 
   methods: {
+    handleIconClick() {
+      this.arrowIconDown = !this.arrowIconDown
+    },
+
     handleDropMenuClick(type) {
       this.$router.push(type)
     }
@@ -61,6 +70,24 @@ export default {
 
   .left {
     width: 120px;
+
+    .dropdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .arrow-icon {
+      font-size: 20px;
+      margin-right: 10px;
+      cursor: pointer;
+      transform: rotate(0);
+      transition: transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+
+    .icon-rotate {
+      transform: rotate(-180deg);
+    }
 
     .avatar {
       position: relative;
