@@ -23,10 +23,8 @@
             </el-col>
           </el-row>
           <el-row class="row skill">
-            <el-col
-              ><h2 class="title">
-                专业技能
-              </h2>
+            <el-col>
+              <h2 class="title">专业技能</h2>
               <hr />
             </el-col>
           </el-row>
@@ -119,21 +117,24 @@
         </el-tooltip>
       </el-col>
     </el-row>
+    <Show v-model="visible" @change="handleChange" />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import Header from '../../components/Header'
+import Show from './show'
 import htmlToPdf from '../../utils/htmlToPdf'
 
 export default {
-  components: { Header },
+  components: { Header, Show },
 
   data() {
     return {
       content: '',
-      value: ''
+      value: '',
+      visible: false
     }
   },
 
@@ -151,7 +152,11 @@ export default {
     },
 
     handlePreview() {
-      this.$message.info('该功能正在开发中。。。')
+      this.visible = true
+    },
+
+    handleChange(value) {
+      this.visible = value
     },
 
     handleDown() {

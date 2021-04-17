@@ -42,7 +42,7 @@ export default {
   },
 
   mounted() {
-    this.imgSrc = Math.random * 10 >= 5 ? avatarBoy : avatarGirl
+    this.imgSrc = Math.random() * 10 >= 5 ? avatarBoy : avatarGirl
   },
 
   methods: {
