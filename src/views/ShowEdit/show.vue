@@ -1,16 +1,13 @@
 <template>
-  <div>
-    <el-dialog title="提示" :visible="isShow" width="30%" center>
-      <span>需要注意的是内容是默认不居中的</span>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="onClose">取 消</el-button>
-        <el-button type="primary" @click="onSave">确 定</el-button>
-      </span>
+  <div v-if="visible" style="relative">
+    <el-dialog center width="70vw" title="简历预览" :visible="visible" @close="onClose">
+      <div id="preview" v-loading="loading"></div>
     </el-dialog>
   </div>
 </template>
 <script>
 export default {
+  // 自定义v-model
   model: {
     prop: 'visible',
     event: 'change'
@@ -22,19 +19,25 @@ export default {
 
   data() {
     return {
-      isShow: false
-    }
-  },
-
-  watch: {
-    visible(nVal) {
-      this.isShow = nVal
+      loading: false
     }
   },
 
   methods: {
+    onPreview(dom) {
+      this.loading = true
+      const container = document.getElementById('preview')
+      container.style.width = '100%'
+      dom.style.width = container.style.width
+      container.style.maxHeight = '600px'
+      container.style.overflow = 'auto'
+      container.appendChild(dom)
+      setTimeout(() => (this.loading = false), 500)
+    },
+
     onClose() {
-      this.isShow = false
+      const container = document.getElementById('preview')
+      container.parentNode.removeChild(container)
       this.$emit('change', false)
     },
 

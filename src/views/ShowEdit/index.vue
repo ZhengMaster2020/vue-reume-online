@@ -102,6 +102,7 @@
             icon="el-icon-view"
             type="success"
             size="mini"
+            :disabled="btnDisabled"
             @click="handlePreview"
           />
         </el-tooltip>
@@ -117,7 +118,7 @@
         </el-tooltip>
       </el-col>
     </el-row>
-    <Show v-model="visible" @change="handleChange" />
+    <Show ref="show" v-model="visible" @change="handleChange" />
   </div>
 </template>
 
@@ -126,6 +127,7 @@ import { mapState } from 'vuex'
 import Header from '../../components/Header'
 import Show from './show'
 import htmlToPdf from '../../utils/htmlToPdf'
+import html2canvas from 'html2canvas'
 
 export default {
   components: { Header, Show },
@@ -134,7 +136,8 @@ export default {
     return {
       content: '',
       value: '',
-      visible: false
+      visible: false,
+      btnDisabled: false
     }
   },
 
@@ -151,12 +154,16 @@ export default {
       this.content = this.$store.state
     },
 
-    handlePreview() {
+    async handlePreview() {
       this.visible = true
+      this.btnDisabled = true
+      const canvas = await html2canvas(document.querySelector('#resume'))
+      canvas && this.$refs['show'].onPreview(canvas)
     },
 
     handleChange(value) {
       this.visible = value
+      this.btnDisabled = false
     },
 
     handleDown() {
