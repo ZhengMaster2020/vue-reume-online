@@ -16,6 +16,9 @@
 - 项目中是怎么封装组件的，有什么思路或者步骤？
 - 该项目为单纯的前端项目，是如何实现数据持久化的？
 - 项目的即时渲染技术，也就是数据双向绑定，使用了**观察者模式**
+- HTML 页面如何转换为 Canvas 画像， canvas 怎么装换成 pdf 文件
+- Vue 的自定以`v-model`以及自定义事件`v-on`、自定义指令`v-directive`
+- localStorage 与 sessionStorage、Cookie 的使用
 
 * VueRoute 以及相关技术
 
