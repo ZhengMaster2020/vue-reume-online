@@ -1,6 +1,6 @@
 <template>
   <div v-if="visible" style="relative">
-    <el-dialog center width="70vw" title="简历预览" :visible="visible" @close="onClose">
+    <el-dialog center width="60vw" title="简历预览" :visible="visible" @close="onClose">
       <div id="preview" v-loading="loading"></div>
     </el-dialog>
   </div>
