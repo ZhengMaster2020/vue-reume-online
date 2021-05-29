@@ -27,8 +27,6 @@
 </template>
 
 <script>
-/* eslint-disable */
-
 import Header from '../../components/Header.vue'
 
 export default {
@@ -95,31 +93,39 @@ export default {
   overflow: hidden;
 }
 .isActive {
-  color: #00c091;
+  /* color: #00c091; */
+  color: #67c23a;
   padding-left: 12px;
-  border-left: 4px solid #00c091;
+  /* border-left: 4px solid #00c091; */
+  border-left: 4px solid #67c23a;
 }
+
 .move-delete i:hover {
   color: #fff;
-  background: #11a480;
+  /* background: #11a480; */
+  background: #67c23a;
 }
+
 .move-delete i {
   margin-left: 10px;
   font-size: 14px;
   padding: 5px;
   border-radius: 5px;
-  color: #11a480;
+  color: #67c23a;
   background: #fff;
 }
+
 .move-delete {
   text-align: right;
   display: none;
   position: absolute;
   right: 10px;
 }
+
 .left-message li:hover .move-delete {
   display: block;
 }
+
 .left-message li {
   color: #9c9c9c;
   padding: 10px;
@@ -132,9 +138,11 @@ export default {
   font-size: 16px;
   position: relative;
 }
+
 .left-message li:hover {
-  color: #11a480;
+  color: #67c23a;
 }
+
 .left-message {
   margin: 5px;
   padding: 5px;
@@ -142,6 +150,7 @@ export default {
   display: block;
   text-align: center;
 }
+
 .left-panel,
 .right-panel {
   border: 1px solid #dedfe1;
