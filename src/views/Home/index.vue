@@ -87,23 +87,22 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+@import '../../assets/css/common';
+
 .home {
   width: 100%;
   overflow: hidden;
 }
 .isActive {
-  /* color: #00c091; */
-  color: #67c23a;
+  color: var(--themeColor);
   padding-left: 12px;
-  /* border-left: 4px solid #00c091; */
-  border-left: 4px solid #67c23a;
+  border-left: 4px solid var(--themeColor);
 }
 
 .move-delete i:hover {
   color: #fff;
-  /* background: #11a480; */
-  background: #67c23a;
+  background: var(--themeColor);
 }
 
 .move-delete i {
@@ -111,7 +110,7 @@ export default {
   font-size: 14px;
   padding: 5px;
   border-radius: 5px;
-  color: #67c23a;
+  color: var(--themeColor);
   background: #fff;
 }
 
@@ -140,7 +139,7 @@ export default {
 }
 
 .left-message li:hover {
-  color: #67c23a;
+  color: var(--themeColor);
 }
 
 .left-message {

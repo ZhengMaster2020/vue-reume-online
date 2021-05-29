@@ -7,22 +7,28 @@
  */
 class Phone {
   constructor(options) {
-    this.brand = options.brand;
-    this.model = options.model;
-    this.price = options.price;
-    console.log(this, 'this');
+    this.brand = options.brand
+    this.model = options.model
+    this.price = options.price
+    console.log(this, 'this')
   }
   watchVideo(videoName) {
-    console.log(
-      `you are using ${this.model} mobile phone of ${this.brand} to watch ${videoName}`
-    );
+    console.log(`you are using ${this.model} mobile phone of ${this.brand} to watch ${videoName}`)
   }
 }
 
 const createPhone = function createPhoneFactory(phoneParams) {
-  console.log(this instanceof createPhoneFactory, 'createPhoneFactory');
-  return new Phone(phoneParams);
-};
+  console.log(this instanceof createPhoneFactory, 'createPhoneFactory')
+  return new Phone(phoneParams)
+}
 
-const huawei_P30 = createPhone({ brand: '华为', model: 'P30', price: 4999 });
-huawei_P30.watchVideo('功夫熊猫');
+const huawei_P30 = createPhone({ brand: '华为', model: 'P30', price: 4999 })
+huawei_P30.watchVideo('功夫熊猫')
+
+const fs = require('fs')
+export const changeTheme = color => {
+  fs.readFile('../assets/css/common.less', (err, data) => {
+    if (err) return false
+    console.log(data, 'aaa')
+  })
+}

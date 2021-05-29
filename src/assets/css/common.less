@@ -1,3 +1,4 @@
+@THEME_COLOR: #00c091;
 @BG_COLOR: #f5f5f7;
 @FONT_COLOR_GREEN: #00c091;
 @FONT_COLOR_GRAY: #9c9c9c;
@@ -5,14 +6,29 @@
 @FONT_SIZE_MD: 14px;
 @FONT_SIZE_XL: 16px;
 
+:root {
+  --themeColor: @THEME_COLOR;
+}
+
+.el-button--success {
+  background-color: var(--themeColor) !important;
+  border-color: var(--themeColor) !important;
+}
+
+.el-button--success.is-plain {
+  color: #f5f5f5 !important;
+}
+
+.el-input.is-active .el-input__inner,
+.el-input__inner:focus {
+  color: var(--themeColor) !important;
+  border-color: var(--themeColor) !important;
+}
+
 .default-theme {
   background-color: @BG_COLOR;
   color: @FONT_COLOR_GRAY;
   font-size: @FONT_SIZE_MD;
-}
-
-body {
-  .default-theme();
 }
 
 // 修改滚动条样式

@@ -6,7 +6,7 @@
         <el-col :span="24">
           <el-row class="row">
             <el-col>
-              <h1 style="font-weight: bold">{{ baseMsg.name }}</h1>
+              <h1 style="font-size:17px;font-weight: bold">{{ baseMsg.name }}</h1>
             </el-col>
           </el-row>
           <el-row class="row">
@@ -22,10 +22,10 @@
               <span class="tag">wechat：</span> weixin1899855881
             </el-col>
           </el-row>
-          <el-row class="row skill">
+          <el-row class="row skill" style="margin-top:10px">
             <el-col>
               <h2 class="title">专业技能</h2>
-              <hr />
+              <hr class="hr" />
             </el-col>
           </el-row>
           <el-row>
@@ -36,15 +36,15 @@
           <el-row class="row intern">
             <el-col>
               <h2 class="title">工作经历</h2>
-              <hr />
+              <hr class="hr" />
             </el-col>
           </el-row>
           <el-row v-for="(item, index) in content.internMsg" :key="index">
             <el-col>
               <div class="intern-header">
-                <span>{{ item.comName }}</span>
-                <span class="intern-position">{{ item.comPosition }}</span>
-                <span class="intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
+                <span class="title">{{ item.comName }}</span>
+                <span class="title intern-position">{{ item.comPosition }}</span>
+                <span class="title intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
               </div>
             </el-col>
             <el-col>
@@ -54,16 +54,16 @@
           <el-row class="row project">
             <el-col>
               <h2 class="title">项目经历</h2>
-              <hr />
+              <hr class="hr" />
             </el-col>
           </el-row>
           <el-row v-for="item in content.projectMsg" :key="item.proName">
             <el-col>
               <div class="intern-header">
-                <span> {{ item.proName }} </span>
-                <span class="intern-position"> {{ item.proPosition }} </span>
-                <span class="intern-position"> {{ item.proPartment }} </span>
-                <span class="intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
+                <span class="title"> {{ item.proName }} </span>
+                <span class="title intern-position"> {{ item.proPosition }} </span>
+                <span class="title intern-position"> {{ item.proPartment }} </span>
+                <span class="title intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
               </div>
             </el-col>
             <el-col>
@@ -74,16 +74,16 @@
           <el-row class="row education">
             <el-col>
               <h2 class="title">教育经历</h2>
-              <hr />
+              <hr class="hr" />
             </el-col>
           </el-row>
           <el-row v-for="item in content.educationMsg" :key="item.eduSchoolName">
             <el-col>
               <div class="intern-header">
-                <span> {{ item.eduSchoolName }} </span>
-                <span class="intern-position"> {{ item.eduProfession }} </span>
-                <span class="intern-position"> {{ item.eduSecCollege }} </span>
-                <span class="intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
+                <span class="title"> {{ item.eduSchoolName }} </span>
+                <span class="title intern-position"> {{ item.eduProfession }} </span>
+                <span class="title intern-position"> {{ item.eduSecCollege }} </span>
+                <span class="title intern-time"> {{ item.dateStart }} 至 {{ item.dateEnd }} </span>
               </div>
             </el-col>
             <el-col>
@@ -210,6 +210,11 @@ export default {
   font-weight: 800;
   margin-left: 20px;
   padding-bottom: 5px;
+
+  .title {
+    // color: var(--themeColor);
+    opacity: 0.8;
+  }
 }
 
 .mavon-editor {
@@ -226,10 +231,15 @@ export default {
   font-weight: bold;
 }
 
+.hr {
+  border: 1px solid var(--themeColor);
+}
+
 .skill,
 .intern,
 .project,
 .education .title {
+  color: var(--themeColor);
   font-weight: bold;
 }
 
@@ -266,6 +276,7 @@ export default {
 }
 
 .row {
+  text-align: left;
   margin: 0 10px;
   padding: 5px 10px;
 }

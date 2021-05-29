@@ -25,6 +25,15 @@
       <div class="router-link"><router-link to="/base">引导填写</router-link></div>
       <div class="router-link"><router-link to="/preview">预览编辑</router-link></div>
     </div>
+
+    <el-color-picker
+      style="margin-right: 30px"
+      show-alpha
+      size="small"
+      v-model="color"
+      :predefine="predefine"
+      @active-change="handleChangeColor"
+    />
   </div>
 </template>
 
@@ -37,12 +46,31 @@ export default {
   data() {
     return {
       arrowIconDown: false,
-      imgSrc: ''
+      imgSrc: '',
+      color: '#00c091',
+      predefine: [
+        '#ff4500',
+        '#ff8c00',
+        '#ffd700',
+        '#90ee90',
+        '#00c091',
+        '#00ced1',
+        '#1e90ff',
+        '#c71585',
+        'rgba(255, 69, 0, 0.68)',
+        'rgb(255, 120, 0)',
+        'hsv(51, 100, 98)',
+        'hsva(120, 40, 94, 0.5)',
+        'hsl(181, 100%, 37%)',
+        'hsla(209, 100%, 56%, 0.73)',
+        '#c7158577'
+      ]
     }
   },
 
   mounted() {
     this.imgSrc = Math.random() * 10 >= 5 ? avatarBoy : avatarGirl
+    this.color = document.documentElement.style.getPropertyValue('--themeColor').trim() || '#00c091'
   },
 
   methods: {
@@ -52,12 +80,20 @@ export default {
 
     handleDropMenuClick(type) {
       this.$router.push(type)
+    },
+
+    handleChangeColor(color) {
+      this.color = color
+      const docStyle = document.documentElement.style
+      docStyle.setProperty('--themeColor', color)
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+@import '../assets/css/common';
+
 .header {
   display: flex;
   align-items: center;
@@ -126,7 +162,7 @@ export default {
 }
 
 .router-link-exact-active {
-  color: #67c23a !important;
-  border-bottom: 4px solid #67c23a;
+  color: var(--themeColor) !important;
+  border-bottom: 4px solid var(--themeColor);
 }
 </style>
