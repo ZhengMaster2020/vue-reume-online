@@ -4,77 +4,77 @@
       工作经历
       <i class="el-icon el-icon-edit"></i>
     </h3>
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-position="top" label-width="80px">
       <el-row>
-        <el-col :span="10">
-          <el-form-item>
-            <el-input v-model="form.name" placeholder="公司名称"></el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="10">
-          <el-form-item>
-            <el-input v-model="form.address" placeholder="公司地址"></el-input>
+        <el-col>
+          <el-form-item label="公司名称">
+            <el-input size="mini" v-model="form.name" placeholder="请输入公司名称"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
+
       <el-row>
-        <el-col :span="10">
-          <el-form-item>
-            <el-input v-model="form.position" placeholder="你的职位"></el-input>
+        <el-col :span="12">
+          <el-form-item label="所在城市">
+            <el-input
+              style="width:98%"
+              size="mini"
+              v-model="form.address"
+              placeholder="请输入公司地址"
+            ></el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="10">
-          <el-form-item>
-            <el-input v-model="form.partment" placeholder="所在部门"></el-input>
+        <el-col :span="12">
+          <el-form-item label="职位名称">
+            <el-input size="mini" v-model="form.position" placeholder="请输入你的职位"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
-      <el-form-item>
-        <el-col :span="9">
-          <el-date-picker
-            type="date"
-            placeholder="起始时间（YYYY-MM）"
-            v-model="form.dateStart"
-            style="width: 100%;"
-          ></el-date-picker>
-        </el-col>
-        <el-col class="line" :span="2">-</el-col>
-        <el-col :span="9">
-          <el-date-picker
-            placeholder="结束时间（YYYY-MM）"
-            v-model="form.dateEnd"
-            style="width: 100%;"
-          ></el-date-picker>
-        </el-col>
-      </el-form-item>
+
       <el-row>
-        <el-col :span="20">
-          <el-form-item>
-            <el-tag type="info" style="float:left"
-              >工作内容 （点击填写框即可显示案例和关键词）</el-tag
-            >
+        <el-col :span="12">
+          <el-form-item label="所在部门">
+            <el-input
+              style="width:98%"
+              size="mini"
+              v-model="form.partment"
+              placeholder="请输入所在部门"
+            />
           </el-form-item>
-          <el-form-item>
-            <mavon-editor
-              class="mavon-editor"
-              toolbarsBackground="#f6f8fa"
-              @change="editWorkMsg"
-              v-model="value"
+        </el-col>
+
+        <el-col :span="12">
+          <el-form-item label="工作时间">
+            <el-date-picker
+              size="mini"
+              type="daterange"
+              style="width:100%"
+              start-placeholder="开始日期"
+              end-placeholder="结束日期"
+              v-model="form.dateStart"
             />
           </el-form-item>
         </el-col>
       </el-row>
-      <el-form-item>
-        <el-button style="float:left; color:#9c9c9c" size="medium" type="text">
-          <el-icon class="el-icon-plus" style="color:#00c091; font-weight:bold"></el-icon>
-          添加更多工作经历
-        </el-button>
-      </el-form-item>
-      <el-form-item>
+
+      <el-row>
+        <el-col>
+          <el-form-item label="工作经历">
+            <mavon-editor
+              class="mavon-editor"
+              toolbarsBackground="#f6f8fa"
+              v-model="value"
+              @change="editWorkMsg"
+            />
+          </el-form-item>
+        </el-col>
+      </el-row>
+
+      <!-- <el-form-item>
         <el-button @click="jump(previous)" type="info">{{ previous }}</el-button>
         <el-button @click="saveInternMsg" type="success">保存</el-button>
         <el-button @click="jump(next)" type="info">{{ next }}</el-button>
-      </el-form-item>
+      </el-form-item> -->
     </el-form>
   </div>
 </template>
@@ -84,15 +84,7 @@ export default {
   name: 'BaseMessage',
   data() {
     return {
-      form: {
-        name: '',
-        address: '',
-        dateStart: '',
-        dateEnd: '',
-        position: '',
-        partment: '',
-        internValue: ''
-      },
+      form: {},
       value: '',
       previous: '上一步',
       next: '下一步'
@@ -102,9 +94,12 @@ export default {
   computed: {
     editWorkMsg(value) {
       console.log(value)
-      // this.form.internValue = htmlCode;
       return ''
     }
+  },
+
+  mounted() {
+    this.fetchInternExpData()
   },
 
   methods: {
@@ -154,27 +149,32 @@ export default {
         }
       }
     }
-  },
-
-  mounted() {
-    this.fetchInternExpData()
   }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .mavon-editor {
-  min-height: 500px;
+  height: 300px;
 }
 .internmsg {
+  text-align: left;
   padding: 10px;
   color: #404040;
-  width: 100%;
   overflow: hidden;
 }
 .title {
+  text-align: center;
   margin-bottom: 20px;
   color: #404040;
   font-weight: bold;
+}
+
+::v-deep .el-form--label-top .el-form-item__label {
+  padding: 0;
+}
+
+.el-form-item {
+  margin-bottom: 0;
 }
 </style>
