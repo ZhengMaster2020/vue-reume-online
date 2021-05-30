@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <Header />
-    <el-row :gutter="20">
-      <el-col :md="6" class="left-panel">
+    <div class="home-content">
+      <aside class="left-panel">
         <ul class="left-message">
           <li v-for="(item, key) in modules" :key="key">
             <span :class="isActive(key)" @click="jump(key)">{{ item }}</span>
@@ -18,11 +18,9 @@
             </span>
           </li>
         </ul>
-      </el-col>
-      <el-col :md="16" class="right-panel" :offet="1">
-        <router-view />
-      </el-col>
-    </el-row>
+      </aside>
+      <section class="right-panel"><router-view /></section>
+    </div>
   </div>
 </template>
 
@@ -89,11 +87,28 @@ export default {
 
 <style lang="less" scoped>
 @import '../../assets/css/common';
+@import '../../assets/css/mixin';
 
 .home {
   width: 100%;
   overflow: hidden;
+
+  &-content {
+    .flex(space-between, flex-start);
+    height: calc(100vh - 92px);
+    padding: 16px;
+
+    .left-panel {
+      width: 250px;
+    }
+
+    .right-panel {
+      width: calc(100% - 250px);
+      margin-left: 16px;
+    }
+  }
 }
+
 .isActive {
   color: var(--themeColor);
   padding-left: 12px;
@@ -126,14 +141,12 @@ export default {
 }
 
 .left-message li {
+  .flex();
   color: #9c9c9c;
   padding: 10px;
   min-height: 26px;
-  margin: 42px 45px;
+  margin: 20px 0;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 16px;
   position: relative;
 }
@@ -152,10 +165,10 @@ export default {
 
 .left-panel,
 .right-panel {
+  height: 100%;
   border: 1px solid #dedfe1;
   text-align: center;
   padding: 5px;
-  margin: 20px;
   color: #fff;
   background-color: #fff;
 }

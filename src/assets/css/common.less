@@ -10,7 +10,9 @@
   --themeColor: @THEME_COLOR;
 }
 
-.el-button--success {
+// 覆盖Element原生样式
+.el-button--success,
+.el-button--primary {
   background-color: var(--themeColor) !important;
   border-color: var(--themeColor) !important;
 }
@@ -33,8 +35,8 @@
 
 // 修改滚动条样式
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: rgb(239, 239, 239);
@@ -42,7 +44,7 @@
 }
 ::-webkit-scrollbar-thumb {
   background: #bfbfbf;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #888;

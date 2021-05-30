@@ -1,5 +1,19 @@
 <template>
   <div class="header">
+    <div class="right">
+      <div class="router-link"><router-link to="/base">引导填写</router-link></div>
+      <div class="router-link"><router-link to="/preview">预览编辑</router-link></div>
+    </div>
+
+    <el-color-picker
+      show-alpha
+      size="small"
+      v-model="color"
+      :predefine="predefine"
+      @active-change="handleChangeColor"
+    />
+
+    <!-- 个人头像 -->
     <div class="left">
       <el-dropdown trigger="click" class="dropdown" @command="handleDropMenuClick">
         <i
@@ -21,19 +35,6 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
-    <div class="right">
-      <div class="router-link"><router-link to="/base">引导填写</router-link></div>
-      <div class="router-link"><router-link to="/preview">预览编辑</router-link></div>
-    </div>
-
-    <el-color-picker
-      style="margin-right: 30px"
-      show-alpha
-      size="small"
-      v-model="color"
-      :predefine="predefine"
-      @active-change="handleChangeColor"
-    />
   </div>
 </template>
 
@@ -93,11 +94,10 @@ export default {
 
 <style lang="less" scoped>
 @import '../assets/css/common';
+@import '../assets/css/mixin';
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  .flex();
   width: 100%;
   height: 56px;
   text-align: center;
@@ -108,9 +108,7 @@ export default {
     width: 120px;
 
     .dropdown {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      .flex();
     }
 
     .arrow-icon {
