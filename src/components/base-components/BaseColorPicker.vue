@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import click from '../utils/utils'
+import click from '../../utils/utils'
 
 export default {
   name: 'color-picker',

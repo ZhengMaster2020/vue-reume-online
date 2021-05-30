@@ -124,7 +124,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import Header from '../../components/Header'
+import Header from '@/components/Header'
 import Show from './show'
 import htmlToPdf from '../../utils/htmlToPdf'
 import html2canvas from 'html2canvas'

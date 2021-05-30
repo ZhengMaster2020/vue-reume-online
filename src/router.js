@@ -5,15 +5,24 @@ import Home from './views/Home'
 
 Vue.use(Router)
 
-const BaseMessage = () => import(/* webpackChunkName: "baseMsg" */ './components/BaseMessage.vue')
+const BaseMessage = () =>
+  import(/* webpackChunkName: "baseMsg" */ './components/experience-components/ExperienceBase.vue')
 const PersonalSkill = () =>
-  import(/* webpackChunkName: "skillMsg" */ './components/PersonalSkill.vue')
+  import(
+    /* webpackChunkName: "skillMsg" */ './components/experience-components/ExperienceSkill.vue'
+  )
 const InternExperience = () =>
-  import(/* webpackChunkName: "internMsg" */ './components/InternExperience.vue')
+  import(
+    /* webpackChunkName: "internMsg" */ './components/experience-components/ExperienceInter.vue'
+  )
 const EducationExperience = () =>
-  import(/* webpackChunkName: "educationMsg" */ './components/EducationExperience.vue')
+  import(
+    /* webpackChunkName: "educationMsg" */ './components/experience-components/ExperienceEducation.vue'
+  )
 const ProjectExperience = () =>
-  import(/* webpackChunkName: "projectMsg" */ './components/ProjectExperience.vue')
+  import(
+    /* webpackChunkName: "projectMsg" */ './components/experience-components/ExperienceProject.vue'
+  )
 
 const router = new Router({
   mode: 'history',
