@@ -5,15 +5,15 @@
       <aside class="left-panel">
         <ul class="left-message">
           <li v-for="(item, key) in modules" :key="key">
-            <span :class="isActive(key)" @click="jump(key)">{{ item }}</span>
+            <span :class="isActive(item.id)" @click="jump(item.id)">{{ item.text }}</span>
             <span class="move-delete">
-              <i class="el-icon el-icon-rank"></i>
-              <i class="el-icon el-icon-delete" @click="deleteModule(item)"></i>
+              <i class="el-icon el-icon-rank" />
+              <i class="el-icon el-icon-delete" @click="deleteModule(item.id)" />
             </span>
           </li>
           <li @click="addModule">
             <span>
-              <i class="el-icon el-icon-circle-plus-outline"></i>
+              <i class="el-icon el-icon-circle-plus-outline" />
               添加自定义模块
             </span>
           </li>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Header from '../../components/Header.vue'
+import Header from '@/components/Header.vue'
 
 export default {
   name: 'home',
@@ -34,8 +34,12 @@ export default {
   },
   data() {
     return {
-      modules: {}
+      modules: []
     }
+  },
+
+  created() {
+    this.getInitData()
   },
 
   methods: {
@@ -68,19 +72,29 @@ export default {
             type: 'success',
             message: '您输入的模块名称是: ' + value
           })
-          this.modules.push(value)
+
+          const params = [...this.modules, { id: '', text: value, active: false }]
+          fetch('http://localhost:3000/module', {
+            method: 'post',
+            body: JSON.stringify(params)
+          })
+            .then(res => res.json())
+            .then(({ modules }) => console.log(modules))
         })
-        .catch()
+        .catch(err => console.log(err))
     },
 
     // 删除模块
     deleteModule(name) {
       this.$delete(this.modules, name)
-    }
-  },
+    },
 
-  created() {
-    this.fetchModulesData()
+    getInitData() {
+      fetch('/mocks/index.json')
+        .then(res => res.json())
+        .then(data => (this.modules = data.modules))
+        .catch(err => console.log(err))
+    }
   }
 }
 </script>

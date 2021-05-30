@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import avatarBoy from '../assets/images/avatar_boy.jpg'
-import avatarGirl from '../assets/images/avatar_girl.jpg'
+import avatarBoy from '@/assets/images/avatar_boy.jpg'
+import avatarGirl from '@/assets/images/avatar_girl.jpg'
 
 export default {
   name: 'Header',
