@@ -69,12 +69,7 @@
           </el-form-item>
         </el-col>
       </el-row>
-
-      <!-- <el-form-item>
-        <el-button @click="jump(previous)" type="info">{{ previous }}</el-button>
-        <el-button @click="saveInternMsg" type="success">保存</el-button>
-        <el-button @click="jump(next)" type="info">{{ next }}</el-button>
-      </el-form-item> -->
+      <FooterBtn />
     </el-form>
   </div>
 </template>
@@ -82,6 +77,7 @@
 <script>
 export default {
   name: 'BaseMessage',
+
   data() {
     return {
       form: {},

@@ -20,10 +20,7 @@
       <el-form-item label="个人网站" prop="web">
         <el-input v-model="baseMsg.web" placeholder="请输入个人博客网址"></el-input>
       </el-form-item>
-      <el-form-item size="large">
-        <el-button type="success" @click="saveBaseMsg('baseMsg')">保存</el-button>
-        <el-button type="info" @click="next">下一步</el-button>
-      </el-form-item>
+      <FooterBtn :btn-group="btnGroup" />
     </el-form>
   </div>
 </template>
@@ -52,7 +49,11 @@ export default {
         address: [{ required: true, message: '请输入地址', trigger: 'blur' }],
         position: [{ required: true, message: '请输入名称', trigger: 'blur' }]
       },
-      flag: false // 填写表单正确标识
+      flag: false, // 填写表单正确标识
+      btnGroup: [
+        { type: 'primary', text: '保存', size: 'mini' },
+        { type: 'info', text: '下一步', size: 'mini' }
+      ]
     }
   },
 

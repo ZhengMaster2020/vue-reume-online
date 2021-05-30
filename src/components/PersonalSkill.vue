@@ -14,11 +14,12 @@
       />
       <!-- v-model="JSON.stringify(skillMsg)" -->
     </div>
-    <div>
+    <!-- <div>
       <el-button type="info" @click="jump(previous)">{{ previous }}</el-button>
       <el-button type="success" @click="saveSkillMsg">保存</el-button>
       <el-button type="info" @click="jump(next)">{{ next }}</el-button>
-    </div>
+    </div> -->
+    <FooterBtn />
   </div>
 </template>
 

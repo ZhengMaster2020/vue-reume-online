@@ -81,6 +81,7 @@
         <el-button @click="saveProjectMsg" type="success">保存</el-button>
         <el-button @click="jump(next)" type="info">{{ next }}</el-button>
       </el-form-item> -->
+      <FooterBtn />
     </el-form>
   </div>
 </template>

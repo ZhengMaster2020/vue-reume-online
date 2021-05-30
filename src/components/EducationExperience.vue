@@ -93,17 +93,13 @@
           </el-form-item>
         </el-col>
       </el-row>
+
       <!-- <el-form-item>
-        <el-button style="float:left; color:#9c9c9c" size="medium" type="text">
-          <el-icon class="el-icon-plus" style="color:#00c091; font-weight:bold"></el-icon
-          >添加更多教育经历
-        </el-button>
-      </el-form-item>
-      <el-form-item>
         <el-button @click="jump(previous)" type="info">{{ previous }}</el-button>
         <el-button @click="saveEducationMsg" type="success">保存</el-button>
         <el-button @click="jump(next)" type="info">{{ next }}</el-button>
       </el-form-item> -->
+      <FooterBtn :btn-group="btnGroup" />
     </el-form>
   </div>
 </template>
@@ -146,7 +142,11 @@ export default {
         eduDesValue: ''
       },
       previous: '上一步',
-      next: '下一步'
+      next: '下一步',
+      btnGroup: [
+        { type: 'info', text: '上一步', size: 'mini' },
+        { type: 'primary', text: '保存', size: 'mini' }
+      ]
     }
   },
 

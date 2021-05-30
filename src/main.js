@@ -10,9 +10,13 @@ import './assets/css/reset.css'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
+import BaseFooterBtn from './components/base-components/BaseFooterBtn'
+
 Vue.config.productionTip = false
 Vue.use(elementUI)
 Vue.use(mavonEditor)
+
+Vue.component('FooterBtn', BaseFooterBtn)
 
 new Vue({
   router,
