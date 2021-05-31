@@ -83,9 +83,12 @@ export default {
     },
 
     onSave(name) {
-      this.$refs[name].validate(valid => {
+      this.$refs[name].validate(async valid => {
         if (valid) {
           this.btnLoading = true
+          const { code, data, message } = await this.$api.login(this.form)
+          if (!code && data) this.$message.success(message)
+          console.log(data)
           setTimeout(() => {
             this.btnLoading = false
             console.log('ssss,', Cookies)

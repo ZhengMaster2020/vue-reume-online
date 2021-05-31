@@ -11,6 +11,9 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
 import BaseFooterBtn from './components/base-components/BaseFooterBtn'
+import Apis from './apis'
+
+Vue.prototype.$api = Apis
 
 Vue.config.productionTip = false
 Vue.use(elementUI)
