@@ -176,6 +176,8 @@ npm install
 npm run dev
 
 node ./server
+
+账号密码随便填写
 ```
 
 ### 🕔 打包项目

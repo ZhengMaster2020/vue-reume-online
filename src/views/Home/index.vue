@@ -50,6 +50,7 @@ export default {
 
     // 当前导航被激活
     isActive(name) {
+      console.log(name, this.$router.currentRoute)
       if (name === this.$router.currentRoute.name) {
         return 'isActive'
       }
@@ -73,13 +74,13 @@ export default {
             message: '您输入的模块名称是: ' + value
           })
 
-          const params = [...this.modules, { id: '', text: value, active: false }]
-          fetch('http://localhost:3000/module', {
-            method: 'post',
-            body: JSON.stringify(params)
-          })
-            .then(res => res.json())
-            .then(({ modules }) => console.log(modules))
+          // const params = [...this.modules, { id: '', text: value, active: false }]
+          // fetch('http://localhost:3000/module', {
+          //   method: 'post',
+          //   body: JSON.stringify(params)
+          // })
+          //   .then(res => res.json())
+          //   .then(({ modules }) => console.log(modules))
         })
         .catch(err => console.log(err))
     },
