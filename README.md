@@ -174,6 +174,8 @@ npm install
 
 ```sh
 npm run dev
+
+node ./server
 ```
 
 ### 🕔 打包项目

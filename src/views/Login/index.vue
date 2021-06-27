@@ -87,15 +87,12 @@ export default {
         if (valid) {
           this.btnLoading = true
           const { code, data, message } = await this.$api.login(this.form)
-          if (!code && data) this.$message.success(message)
-          console.log(data)
-          setTimeout(() => {
-            this.btnLoading = false
-            console.log('ssss,', Cookies)
-            Cookies.setItem('userInfo', JSON.stringify(this.form), { expires: 3 })
-            this.$message.success('登录成功！')
+          this.btnLoading = false
+          if (!code && data) {
+            this.$message.success(message)
             this.$router.push('/')
-          }, 500)
+            Cookies.setItem('userInfo', JSON.stringify(this.form), { expires: 3 })
+          } else this.$message.success('登录失败！')
         }
       })
     },

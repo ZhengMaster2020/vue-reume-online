@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Message, Notification } from 'element-ui'
+import { Notification } from 'element-ui'
 
 const config = {
   baseURL: 'http://localhost:3000/api/',
