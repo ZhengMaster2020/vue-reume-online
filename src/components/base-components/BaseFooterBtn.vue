@@ -1,6 +1,12 @@
 <template>
   <div class="footer-btn">
-    <el-button :size="item.size" :type="item.type" v-for="item in btnGroup" :key="item.text">
+    <el-button
+      :size="item.size"
+      :type="item.type"
+      v-for="item in btnGroup"
+      :key="item.text"
+      @click="onClick(item)"
+    >
       {{ item.text }}
     </el-button>
   </div>
@@ -16,6 +22,12 @@ export default {
         { type: 'primary', text: '保存', size: 'mini' },
         { type: 'info', text: '下一步', size: 'mini' }
       ]
+    }
+  },
+
+  methods: {
+    onClick(item) {
+      this.$emit('on-click', item)
     }
   }
 }

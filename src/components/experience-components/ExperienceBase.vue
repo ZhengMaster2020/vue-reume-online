@@ -20,7 +20,7 @@
       <el-form-item label="个人网站" prop="web">
         <el-input v-model="baseMsg.web" placeholder="请输入个人博客网址"></el-input>
       </el-form-item>
-      <FooterBtn :btn-group="btnGroup" />
+      <FooterBtn :btn-group="btnGroup" @on-click="handleClick" />
     </el-form>
   </div>
 </template>
@@ -36,7 +36,7 @@ export default {
       rules: {
         name: [
           { required: true, message: '请输入名称', trigger: 'blur' },
-          { min: 2, max: 12, message: '长度在 2 到 12 个字符', trigger: 'blur' }
+          { min: 2, max: 50, message: '长度在 2 到 12 个字符', trigger: 'blur' }
         ],
         phone: [
           { required: true, message: '请输入电话', trigger: 'blur' },
@@ -77,6 +77,11 @@ export default {
       this.form.web = data.web
     },
 
+    handleClick(item) {
+      console.log(item, 'lplp')
+      item.text === '保存' ? this.saveBaseMsg() : this.next()
+    },
+
     // 点击下一步
     next() {
       console.log(this.flag, 'fl')
@@ -85,9 +90,8 @@ export default {
     },
 
     // 保存用户填写的基本信息
-    saveBaseMsg(formName) {
-      this.$refs[formName].validate(valid => {
-        console.log(valid, 'li')
+    saveBaseMsg() {
+      this.$refs.baseMsg.validate(valid => {
         if (valid) {
           sessionStorage.setItem('baseMsg', JSON.stringify(this.baseMsg))
           this.$store.commit('saveBaseMsg', this.baseMsg)

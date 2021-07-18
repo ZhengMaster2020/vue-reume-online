@@ -111,6 +111,7 @@ export default {
 .login {
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 
   .login-wrap {
     width: 1120px;

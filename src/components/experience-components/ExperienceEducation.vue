@@ -99,7 +99,7 @@
         <el-button @click="saveEducationMsg" type="success">保存</el-button>
         <el-button @click="jump(next)" type="info">{{ next }}</el-button>
       </el-form-item> -->
-      <FooterBtn :btn-group="btnGroup" />
+      <FooterBtn :btn-group="btnGroup" @on-click="jump" />
     </el-form>
   </div>
 </template>
@@ -164,7 +164,7 @@ export default {
     },
 
     // 模块跳转
-    jump(step) {
+    jump({ text: step }) {
       const moduleKeys = Object.keys(this.$store.state.modules)
       const currentRouteName = this.$router.currentRoute.name
       const index = moduleKeys.findIndex(item => {
@@ -187,6 +187,8 @@ export default {
           return
         }
       }
+
+      text === '保存' && this.saveEducationMsg()
     }
   }
 }

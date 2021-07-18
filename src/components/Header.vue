@@ -16,23 +16,22 @@
     <!-- 个人头像 -->
     <div class="left">
       <el-dropdown trigger="click" class="dropdown" @command="handleDropMenuClick">
-        <i
-          :class="['el-icon-caret-bottom', 'arrow-icon', arrowIconDown && 'icon-rotate']"
-          @click="handleIconClick"
-        />
-        <el-avatar class="avatar" :size="40" :src="imgSrc" @error="() => true">
-          <img
-            class="img"
-            src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
-          />
-        </el-avatar>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="/" icon="el-icon-s-home">首页</el-dropdown-item>
-          <el-dropdown-item command="/" icon="el-icon-s-custom">个人中心</el-dropdown-item>
-          <el-dropdown-item command="/login" divided icon="el-icon-s-promotion">
-            退出登录
-          </el-dropdown-item>
-        </el-dropdown-menu>
+        <div @click="handleIconClick" class="center">
+          <i :class="['el-icon-caret-bottom', 'arrow-icon', arrowIconDown && 'icon-rotate']" />
+          <el-avatar class="avatar" :size="40" :src="imgSrc" @error="() => true">
+            <img
+              class="img"
+              src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
+            />
+          </el-avatar>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="/" icon="el-icon-s-home">首页</el-dropdown-item>
+            <el-dropdown-item command="/" icon="el-icon-s-custom">个人中心</el-dropdown-item>
+            <el-dropdown-item command="/login" divided icon="el-icon-s-promotion">
+              退出登录
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </div>
       </el-dropdown>
     </div>
   </div>
@@ -141,6 +140,10 @@ export default {
 
   .right {
     width: calc(100% - 120px);
+  }
+
+  .center {
+    .flex;
   }
 }
 
